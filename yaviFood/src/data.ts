@@ -3,7 +3,7 @@ import {Food} from './app/shared/models/Food'
 export const sample_foods: Food[] = [
   {
     id:'1',
-    name: 'Pizza de peperoni',
+    name: 'Pizza de Pepperoni',
     cookTime: '10-20',
     price: 10,
     favorite: false,
@@ -36,7 +36,7 @@ export const sample_foods: Food[] = [
   },
   {
     id:'4',
-    name: 'Papas fritas',
+    name: 'Papas Fritas',
     price: 2,
     cookTime: '15-20',
     favorite: true,
@@ -68,4 +68,5 @@ export const sample_foods: Food[] = [
     tags: ['FastFood', 'Pizza', 'Lunch'],
   },
 ]
+
 
