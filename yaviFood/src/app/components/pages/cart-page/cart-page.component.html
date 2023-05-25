@@ -1,5 +1,11 @@
 <app-title title="Cart Page" margin="1.5rem 0 0 2.5rem"></app-title>
 
+<app-not-found
+[visible]="!cart || !cart.items.length"
+notFoundMessage="La página del carrito está vacía!"
+resetLinkText="Ir a página principal"
+></app-not-found>
+
 <div *ngIf="cart && cart.items.length" class="container">
 <ul>
   <li *ngFor="let cartItem of cart.items">
@@ -39,6 +45,6 @@
     <div class="total-price">{{cart.totalPrice|currency}}</div>
   </div>
 
-  <a routerLink="/checkout">Proceed to Checkout</a>
+  <a routerLink="/checkout">Pasar por la caja</a>
 </div>
 </div>
