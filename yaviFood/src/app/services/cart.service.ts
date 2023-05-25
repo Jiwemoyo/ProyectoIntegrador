@@ -10,6 +10,7 @@ import { CartItem } from '../shared/models/CartItem';
 export class CartService {
   private cart:Cart = this.getCartFromLocalStorage()
   private cartSubjet: BehaviorSubject<Cart> = new BehaviorSubject(this.cart)
+  changeQuantity: any;
 
   constructor() { }
 
