@@ -10,7 +10,7 @@ import { CartItem } from '../shared/models/CartItem';
 export class CartService {
   private cart:Cart = this.getCartFromLocalStorage()
   private cartSubjet: BehaviorSubject<Cart> = new BehaviorSubject(this.cart)
-  changeQuantity: any;
+
 
   constructor() { }
 
@@ -29,7 +29,7 @@ export class CartService {
     this.setCartToLocalStorage()
   }
 
-  changeQuality(foodId:string, quantity:number){
+  changeQuantity(foodId:string, quantity:number){
     let cartItem = this.cart.items
     .find(item => item.food.id === foodId)
 
