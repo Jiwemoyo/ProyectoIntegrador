@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="details">
+    <app-title title="Login"></app-title>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="input-container">
+        <label>Email</label>
+        <div>
+          <input type="email" placeholder="Email" formControlName="email">
+        </div>
+      </div>
+
+      <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
+        <div *ngIf="fc.email.errors.required">Se requiere llenar este campo</div>
+        <div *ngIf="fc.email.errors.email">El Email no es correcto</div>
+      </div>
+
+      <div class="input-container">
+        <label>Password</label>
+        <div>
+          <input type="password" placeholder="Password" formControlName="password">
+        </div>
+      </div>
+
+      <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
+        <div *ngIf="fc.password.errors.required">Se requiere llenar este campo</div>
+      </div>
+
+      <div class="button">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
