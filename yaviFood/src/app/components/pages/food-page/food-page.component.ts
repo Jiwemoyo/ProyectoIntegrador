@@ -14,7 +14,7 @@ export class FoodPageComponent implements OnInit {
   constructor(activateRoute:ActivatedRoute,foodService:FoodService,
    private cartService:CartService, private router: Router) {
     activateRoute.params.subscribe((params) => {
-      if (params.id) 
+      if (params.id)
         foodService.getFoodById(params.id).subscribe(serverFood => {
           this.food = serverFood;
         });
@@ -29,3 +29,4 @@ export class FoodPageComponent implements OnInit {
     this.router.navigateByUrl('/cart-page')
   }
 }
+//comentando para no perderlo

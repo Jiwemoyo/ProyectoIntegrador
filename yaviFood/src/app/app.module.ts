@@ -35,3 +35,5 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//comentando para no perderlo
