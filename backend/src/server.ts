@@ -1,4 +1,3 @@
-// import { Food } from 'src/app/shared/models/Food';
 import express from "express";
 import cors from "cors";
 import { sample_foods, sample_tags } from "./data";
@@ -7,7 +6,7 @@ const app = express();
 app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]
-}))
+}));
 
 app.get("/api/foods", (req, res) => {
     res.send(sample_foods);
@@ -40,6 +39,6 @@ app.get("/api/foods/:foodId", (req, res) => {
 
 
 const port = 5000;
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log("Website served on http://localhost:" + port);
 })

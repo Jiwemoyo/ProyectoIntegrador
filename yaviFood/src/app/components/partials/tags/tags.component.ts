@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FoodService } from 'src/app/services/food.service';
 import { Tag } from 'src/app/shared/models/tag';
 
@@ -7,9 +7,14 @@ import { Tag } from 'src/app/shared/models/tag';
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.css']
 })
-export class TagsComponent {
-  tags?:Tag[]
-  constructor(foodServices:FoodService){
-    this.tags = foodServices.getAllTags()
+export class TagsComponent implements OnInit {
+  tags?:Tag[];
+  constructor(foodService:FoodService){
+    foodService.getAllTags().subscribe(serverTags => {
+      this.tags = serverTags;
+    })
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 }
