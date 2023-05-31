@@ -93,5 +93,12 @@ export const sample_users: any[] = [
     address: "Shanghai",
     isAdmin: false,
   },
+  {
+    name: "Jinson Medina",
+    email: "am987406@gmail.com",
+    password: "jinson",
+    address: "Catzuqui",
+    isAdmin: false,
+  },
 ];
 
