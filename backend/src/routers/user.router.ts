@@ -24,13 +24,12 @@ router.get("/base", asyncHandler(
 router.post("/login", asyncHandler(
     async(req,res) => {
         const {email, password} = req.body;
-        const user = sample_users.find(user => user.email == email &&
-            user.password == password);
+        const user = await UserModel.findOne({email});
     
-            if(user){
+            if(user && (await bcrypt.compare(password,user.password))){
                 res.send(generateTokenResponse(user));
             }else{
-                res.status(HTTP_BAD_REQUEST).send(" El email o password no es valido!");
+                res.status(HTTP_BAD_REQUEST).send(" El email o password no son valido!");
             }
     }
 ))
@@ -46,12 +45,13 @@ router.post('/register', asyncHandler(
       const encryptedPassword = await bcrypt.hash(password, 10);
 
       const newUser:User = {
-        id:'',
-        name,
-        email: email.toLowerCase(),
-        password: encryptedPassword,
-        address,
-        isAdmin: false
+          id: '',
+          name,
+          email: email.toLowerCase(),
+          password: encryptedPassword,
+          address,
+          isAdmin: false,
+          token: ""
       }
   
       const dbUser = await UserModel.create(newUser);
@@ -60,14 +60,19 @@ router.post('/register', asyncHandler(
   
 ))
 
-const generateTokenResponse = (user:any) => {
+const generateTokenResponse = (user: User) => {
     const token = jwt.sign({
-        email:user.email, isAdmin:user.isAdmin
-    },"SomeRandomText", {
-        expiresIn:"30d"
-    })
-
-    user.token = token;
-    return user;
+        id: user.id, email:user.email, isAdmin: user.isAdmin
+    },"SomeRandomText"/*process.env.JWT_SECRET!*/, {
+        expiresIn:"10d"
+    });
+    return{
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        address: user.address,
+        isAdmin: user.isAdmin,
+        token: token
+    };
 }
 export default router;

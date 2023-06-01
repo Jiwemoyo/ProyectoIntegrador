@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { IUserRegister } from 'src/app/shared/interfaces/IUseRegister';
-import { PasswordsMatchValidator } from 'src/app/shared/validators/validacion_password';
-
+import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister';
+import { PasswordsMatchValidator } from 'src/app/shared/validators/password_match_validator';
 
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
-export class RegisterPageComponent implements OnInit{
+export class RegisterPageComponent implements OnInit {
 
   registerForm!:FormGroup;
   isSubmitted = false;
