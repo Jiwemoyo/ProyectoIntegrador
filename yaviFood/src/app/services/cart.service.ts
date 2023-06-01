@@ -48,6 +48,9 @@ export class CartService {
   getCartObservable():Observable<Cart>{
     return this.cartSubjet.asObservable()
   }
+  getCart(): Cart{
+    return this.cartSubjet.value;
+  }
 
   private setCartToLocalStorage():void{
     //esto es para guardar en el local storage para que no se borre cuando se refresque
