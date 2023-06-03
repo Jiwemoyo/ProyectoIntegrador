@@ -1,0 +1,53 @@
+.container{
+  display: flex;
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+.words{
+  margin-right: 5rem;
+}
+
+.principal{
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1E2838;
+}
+
+.secondary{
+  font-size: 1rem;
+  line-height: 1.8rem;
+  padding: 0;
+  color: #1E2838;
+}
+
+.yavirac{
+  color: #FFA07A;
+}
+
+.description{
+  font-size: 1rem;
+}
+
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.mosaic img {
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.531);
+}
+
+@media (min-width: 1600px) {
+  .mosaic img{
+    width: 100%;
+  }
+}
