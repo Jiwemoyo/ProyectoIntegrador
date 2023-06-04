@@ -2,17 +2,21 @@ header{
   position: relative;
   background: white;
   padding: 0;
-  border-bottom: 1px solid #e72929;
+  margin-right: 160px;
+  margin-left: 160px;
+  margin-top: 24px;
 }
+.logo{
+  display: flex;
+  align-items: center;
 
-a{
-  color: #af1313;
 }
+.logo-yavi{
+  color: #1E2838;
 
-a:hover{
-  background:#e72929;
-  color: white;
-  cursor: pointer;
+}
+.logo-food{
+  color: #FFA07A;
 }
 
 .container{
@@ -24,21 +28,32 @@ a:hover{
 a.logo{
   font-weight: bold;
   padding: 1rem;
+  font-size: 30px;
 }
+.logo img{
+  width: 24px;
+}
+
 
 ul{
   display: flex;
   list-style-type: none;
-  margin: 0;
 }
 
 ul a{
   padding: 1rem;
   display: inline-block;
+  color: #D3D3D3;
+  font-weight: bold;
 }
 
-a span{
-  background: #ff4d4d;
+ul a:hover{
+  color: #1E2838;
+}
+
+
+.canrQuantity{
+  background: #FFDB58;
   color: white;
   padding: 0.1rem 0.45rem;
   border-radius: 100rem;
