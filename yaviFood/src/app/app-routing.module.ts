@@ -7,21 +7,20 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { NoFoundPageComponent } from './components/partials/no-found-page/no-found-page.component';
+import { AdminRoutingModule } from './components/admin/admin-routing.module';
+import { PagesRoutingModule } from './components/pages/pages-routing.module';
+import { PagesComponent } from './components/pages/pages.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'search/:searchTerm',component:HomeComponent},
-  {path:'tag/:tag',component:HomeComponent},
-  {path:'food/:id',component:FoodPageComponent},
-  {path:'cart-page',component:CartPageComponent},
-  {path:'login',component:LoginPageComponent},
-  {path:'register',component:RegisterPageComponent},
- {path:'checkout',component:CheckoutPageComponent, canActivate:[AuthGuard]},
-
+  { path: '', redirectTo: '/cliente', pathMatch: 'full' },
+  { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: '**', component: NoFoundPageComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), AdminRoutingModule, PagesRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,34 @@
+<div class="form-container">
+  <h2>Crear/Editar Producto</h2>
+  <form>
+    <input type="text" [(ngModel)]="food.name" placeholder="Nombre del producto" required>
+    <input type="number" [(ngModel)]="food.price" placeholder="Precio del producto" required>
+    <!-- Otros campos del formulario para los atributos del modelo Food -->
+    <button type="submit" (click)="createOrUpdateFood()">Guardar</button>
+    <button type="button" (click)="cancelEditing()">Cancelar</button>
+  </form>
+</div>
+
+<div class="table-container">
+  <h2>Lista de Productos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <!-- Otros encabezados de columna para los atributos del modelo Food -->
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of foods">
+        <td>{{ food.name }}</td>
+        <td>{{ food.price }}</td>
+        <!-- Otros campos de columna para los atributos del modelo Food -->
+        <td>
+          <button class="edit" (click)="editFood(food)">Editar</button>
+          <button class="delete" (click)="deleteFood(food.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+ 

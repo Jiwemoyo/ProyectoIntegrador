@@ -69,10 +69,30 @@ router.get("/",asyncHandler(
     }
   ))
 
+  //obtener
   router.get("/:foodId", asyncHandler(
     async (req, res) => {
       const food = await FoodModel.findById(req.params.foodId);
       res.send(food);
     }
   ))
+  //crear
+  router.post('/', asyncHandler(async(req, res)=> {
+    const newFood = req.body;
+    const createdFood = await FoodModel.create(newFood);
+    res.send(createdFood);
+  }))
+  //actualizar
+  router.put('/:foodId', asyncHandler(async(req, res)=> {
+    const updateFood = req.body;
+    const foodId = req.params.foodId;
+    const result = await FoodModel.findByIdAndUpdate(foodId, updateFood, {new: true});
+    res.send(result)
+  }));
+  router.delete('/:foodId', asyncHandler(async (req, res)=>{
+    const foodId = req.params.foodId;
+    await FoodModel.findByIdAndDelete(foodId);
+    res.send('Platillo eliminado exitosamente')
+  }))
+
 export default router;

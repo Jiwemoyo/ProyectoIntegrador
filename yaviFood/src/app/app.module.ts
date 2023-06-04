@@ -26,7 +26,12 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
-
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { NoFoundPageComponent } from './components/partials/no-found-page/no-found-page.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SidebardComponent } from './components/partials/sidebard/sidebard.component';
+import { PagesComponent } from './components/pages/pages.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,6 +54,11 @@ import { CheckoutPageComponent } from './components/pages/checkout-page/checkout
     OrderItemsListComponent,
     MapComponent,
     CheckoutPageComponent,
+    DashboardComponent,
+    NoFoundPageComponent,
+    AdminComponent,
+    SidebardComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +71,8 @@ import { CheckoutPageComponent } from './components/pages/checkout-page/checkout
       timeOut:3000,
       positionClass:'toast-bottom-right',
       newestOnTop:false
-    })
+    }),
+    FormsModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}

@@ -10,6 +10,7 @@ import { FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_TAGS_URL, FOODS_URL, FOOD_
   providedIn: 'root'
 })
 export class FoodService {
+  getAllFoods: any;
 
   constructor(private http:HttpClient) { }
 
@@ -33,6 +34,19 @@ export class FoodService {
 
   getFoodById(foodId:string): Observable<Food> {
     return this.http.get<Food>(FOOD_BY_ID_URL + foodId);
+  }
+  createFood(food: Food): Observable<Food> {
+    return this.http.post<Food>(FOODS_URL, food);
+  }
+
+  updateFood(food: Food): Observable<Food> {
+    const url = `${FOODS_URL}/${food.id}`;
+    return this.http.put<Food>(url, food);
+  }
+
+  deleteFood(foodId: string): Observable<any> {
+    const url = `${FOODS_URL}/${foodId}`;
+    return this.http.delete(url);
   }
 }
 //comentando para no perderlo
