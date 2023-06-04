@@ -59,7 +59,8 @@ import { FormsModule } from '@angular/forms';
     NoFoundPageComponent,
     AdminComponent,
     SidebardComponent,
-    PagesComponent
+    PagesComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
