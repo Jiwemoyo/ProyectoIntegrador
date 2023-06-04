@@ -3,7 +3,7 @@ import { sample_users } from "../data";
 import jwt from "jsonwebtoken";
 import { User, UserModel } from "../models/user.models";
 import asyncHandler from "express-async-handler";
-import { HTTP_BAD_REQUEST } from "../constant/http_status";
+import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import bcrypt from "bcryptjs";
 
 const router = Router();

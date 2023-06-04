@@ -33,6 +33,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { SidebardComponent } from './components/partials/sidebard/sidebard.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true },
+    {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
