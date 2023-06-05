@@ -21,6 +21,12 @@ export class SidebardComponent implements OnInit{
       this.user = newUser;
     })
   }
+  //Sidebar toggle show hide function
+status = false;
+addToggle()
+{
+  this.status = !this.status;       
+}
 
   ngOnInit(): void {
 

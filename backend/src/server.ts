@@ -29,5 +29,12 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log("Website served on http://localhost:" + port);
 })
+app.use(cors({
+    credentials: true,
+    origin: ["http://localhost:4200"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 //comentando para no perderlo
