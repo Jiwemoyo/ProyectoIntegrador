@@ -11,13 +11,13 @@
 }
 
 .principal{
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #1E2838;
 }
 
 .secondary{
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.8rem;
   padding: 0;
   color: #1E2838;
@@ -39,7 +39,7 @@
 }
 
 .mosaic img {
-  width: 250px;
+  width: 200px;
   height: auto;
   object-fit: cover;
   border-radius: 5px;
@@ -50,4 +50,16 @@
   .mosaic img{
     width: 100%;
   }
+  .principal{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1E2838;
+  }
+  .secondary{
+    font-size: 1rem;
+    line-height: 1.8rem;
+    padding: 0;
+    color: #1E2838;
+  }
+
 }
