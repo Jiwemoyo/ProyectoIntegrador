@@ -10,8 +10,6 @@ import { FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_TAGS_URL, FOODS_URL, FOOD_
   providedIn: 'root'
 })
 export class FoodService {
-  getAllFoods: any;
-
   constructor(private http:HttpClient) { }
 
   getAll():  Observable<Food[]> {

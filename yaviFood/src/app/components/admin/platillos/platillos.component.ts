@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Food } from 'src/app/shared/models/Food';
+import { Component } from '@angular/core';
 import { FoodService } from 'src/app/services/food.service';
-import { IFood } from 'src/app/shared/interfaces/IFood';
-import { FormsModule } from '@angular/forms';
+import { Food } from 'src/app/shared/models/Food';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-platillos',
+  templateUrl: './platillos.component.html',
+  styleUrls: ['./platillos.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class PlatillosComponent {
   foods: Food[] = [];
   food: Food = {
     id: '',
@@ -20,14 +18,37 @@ export class DashboardComponent implements OnInit {
     stars: 0,
     imageUrl: '',
     origins: [],
-    cookTime: ''
+    cookTime: '',
   };
+
+  tags = {
+    All: false,
+    FastFood: false,
+    Pizza: false,
+    Lunch: false,
+    SlowFood: false,
+    Hamburger: false,
+    Fry: false,
+    Soup: false,
+  };
+
   editing = false;
 
-  constructor(private foodService: FoodService) { }
+  constructor(private foodService: FoodService) {}
 
-  ngOnInit() {
-    this.getFoods();
+  getTags(): string[] {
+    let newTags: string[];
+    newTags = Object.entries(this.tags)
+      .map((entrie) => {
+        if (entrie[1] === true) {
+          return entrie[0];
+        } else {
+          return 'false';
+        }
+      })
+      .filter((x) => x !== 'false');
+
+    return (this.food.tags = newTags);
   }
 
   getFoods() {
@@ -45,9 +66,11 @@ export class DashboardComponent implements OnInit {
   }
 
   createFood() {
-    this.foodService.createFood(this.food).subscribe(() => {
+    this.getTags();
+    this.foodService.createFood(this.food).subscribe((res) => {
       this.resetForm();
       this.getFoods();
+      console.log(res);
     });
   }
 
@@ -83,8 +106,12 @@ export class DashboardComponent implements OnInit {
       stars: 0,
       imageUrl: '',
       origins: [],
-      cookTime: ''
+      cookTime: '',
     };
     this.editing = false;
+  }
+
+  ngOnInit() {
+    this.getFoods();
   }
 }

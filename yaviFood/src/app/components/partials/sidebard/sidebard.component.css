@@ -9,6 +9,33 @@ a {
 li {
   list-style: none;
 }
+.logo{
+  display: flex;
+  align-items: center;
+
+}
+.logo-yavi{
+  color: #1E2838;
+
+}
+.logo-food{
+  color: #FFA07A;
+}
+
+.container{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+a.logo{
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 30px;
+}
+.logo img{
+  width: 24px;
+}
 :root {
   --poppins: 'Poppins', sans-serif;
   --lato: 'Lato', sans-serif;

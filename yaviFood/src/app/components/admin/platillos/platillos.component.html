@@ -1,0 +1,81 @@
+<section>
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="food.name" name="nombre" />
+  </div>
+  <div>
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" [(ngModel)]="food.price" name="precio" />
+  </div>
+  <div>
+    <label>Etiquetas:</label>
+    <div for="">
+      All
+      <input type="checkbox" value="All" [(ngModel)]="tags.All" />
+    </div>
+    <div for="">
+      FastFood
+      <input type="checkbox" value="All" [(ngModel)]="tags.FastFood" />
+    </div>
+    <div for="">
+      Pizza
+      <input type="checkbox" value="All" [(ngModel)]="tags.Pizza" />
+    </div>
+    <div for="">
+      Lunch
+      <input type="checkbox" value="All" [(ngModel)]="tags.Lunch" />
+    </div>
+     <div for="">
+      SlowFood
+      <input type="checkbox" value="All" [(ngModel)]="tags.SlowFood" />
+    </div>
+    <div for="">
+      Hamburger
+      <input type="checkbox" value="All" [(ngModel)]="tags.Hamburger" />
+    </div>
+    <div for="">
+      Fry
+      <input type="checkbox" value="All" [(ngModel)]="tags.Fry" />
+    </div>
+    <div for="">
+      Soup
+      <input type="checkbox" value="All" [(ngModel)]="tags.Soup" />
+    </div>
+  </div>
+  <div>
+    <label for="estrellas">Estrellas:</label>
+    <input
+      type="number"
+      min="1"
+      max="5"
+      id="estrellas"
+      [(ngModel)]="food.stars"
+      name="stars"
+    />
+  </div>
+  <div>
+    <label for="imagen">Imagen:</label>
+    <input
+      type="text"
+      id="imagen"
+      [(ngModel)]="food.imageUrl"
+      name="imageUrl"
+    />
+  </div>
+  <div>
+    <label for="origen">Origen:</label>
+    <input type="text" id="origen" [(ngModel)]="food.origins[0]" name="origin" />
+  </div>
+  <div>
+    <label for="tiempo">Tiempo de cocción:</label>
+    <input
+      type="text"
+      id="tiempo"
+      [(ngModel)]="food.cookTime"
+      name="cookTime"
+    />
+  </div>
+  <form>
+    <input type="submit" value="CREAR" (click)="createOrUpdateFood()" />
+  </form>
+</section>

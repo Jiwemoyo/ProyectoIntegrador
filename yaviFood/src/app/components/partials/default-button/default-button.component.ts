@@ -12,9 +12,9 @@ export class DefaultButtonComponent implements OnInit {
   @Input()
   text:string = 'Submit';
   @Input()
-  bgColor = '#e72929';
+  bgColor = '#FFDB58';
   @Input()
-  color = 'white';
+  color = 'black';
   @Input()
   fontSizeRem = 1.3;
   @Input()

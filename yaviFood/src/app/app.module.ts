@@ -34,6 +34,7 @@ import { SidebardComponent } from './components/partials/sidebard/sidebard.compo
 import { PagesComponent } from './components/pages/pages.component';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AdminModule } from './components/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -70,12 +71,12 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     RatingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AdminModule,
     ToastrModule.forRoot({
       timeOut:3000,
       positionClass:'toast-bottom-right',
       newestOnTop:false
     }),
-    FormsModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true },

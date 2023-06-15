@@ -27,7 +27,7 @@ app.get('*', (req, res) => {
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log("Website served on http://localhost:" + port);
+    console.log("Servidor conectado en http://localhost:" + port);
 })
 app.use(cors({
     credentials: true,
