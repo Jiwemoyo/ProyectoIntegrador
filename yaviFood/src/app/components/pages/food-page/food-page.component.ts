@@ -9,7 +9,7 @@ import { Food } from 'src/app/shared/models/Food';
   templateUrl: './food-page.component.html',
   styleUrls: ['./food-page.component.css']
 })
-export class FoodPageComponent implements OnInit {
+export class FoodPageComponent  {
   food!:Food;
   constructor(activateRoute:ActivatedRoute,foodService:FoodService,
    private cartService:CartService, private router: Router) {
@@ -19,9 +19,6 @@ export class FoodPageComponent implements OnInit {
           this.food = serverFood;
         });
     })
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   addToCart(){

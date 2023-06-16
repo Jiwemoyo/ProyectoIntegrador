@@ -121,4 +121,17 @@ li .remove-button:hover{
   opacity: 1;
   cursor: pointer;
 }
+.cmbColumn {
+  background-color: #ffff;
+  border-radius: 8px;
+  color: #000000;
+  border: none;
+  font-size: 14px;
+  height: 30px;
+  padding: 5px;
+  width: 100px;
+}
 
+.cmbColumn .option {
+  height: 30px;
+}

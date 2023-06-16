@@ -1,14 +1,14 @@
-<!-- Poner los nombres en espanol siempre y cuando no sean etiquetas -->
 <header>
   <div class="container">
     <a routerLink="/" class="logo"><img src="/assets/logoyavifood.png" alt=""><span class="logo-yavi">Yavi</span> <span class="logo-food">Food</span> </a>
     <nav>
       <ul>
         <li *ngIf="!isAuth">
-          <a routerLink="/login">Login</a>
+          <a class="login" routerLink="/login">LOGIN</a>
         </li>
         <li  *ngIf="isAuth" class="menu-container">
-          <a routerLink="/dashboard">{{user.name}}</a>
+          
+          <a class="profile"><i class="bi bi-person-circle"></i> {{user.name}}</a>
           <div class="menu">
             <a routerLink="/profile">Perfil</a>
             <a routerLink="/orders">Ordenes</a>
@@ -16,7 +16,7 @@
           </div>
         </li>
         <li>
-          <a routerLink="/cart-page">
+          <a  class="cart" routerLink="/cart-page">
             Pedido <span *ngIf="cartQuantity">{{cartQuantity}}</span>
           </a>
         </li>

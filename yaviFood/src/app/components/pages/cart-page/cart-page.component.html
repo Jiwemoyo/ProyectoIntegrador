@@ -1,4 +1,4 @@
-<app-title title="Cart Page" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-title title="Tu lista de compras" margin="1.5rem 0 0 2.5rem"></app-title>
 
 <app-not-found
 [visible]="!cart || !cart.items.length"
@@ -18,7 +18,7 @@ resetLinkText="Ir a página principal"
       </a>
     </div>
     <div>
-      <select #quantitySelect
+      <select class="cmbColumn" #quantitySelect
       [value]="cartItem.quantity"
       (change)="changeQuantity(cartItem, quantitySelect.value)">
       <option>1</option>
@@ -34,7 +34,7 @@ resetLinkText="Ir a página principal"
 
     <div>
       <button class="remove-button" (click)="removeFromCart(cartItem)">
-        Remove
+        Eliminar Producto
       </button>
     </div>
   </li>
