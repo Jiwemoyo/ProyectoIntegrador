@@ -3,6 +3,7 @@ header{
   position: relative;
   background: white;
   padding: 0;
+  z-index: 99;
   
 }
 .container{

@@ -4,7 +4,7 @@ notFoundMessage="Comida no encontrada"
 resetLinkText="Volver a la página de inicio"
 ></app-not-found>
 
-<div  *ngIf="food.id" class="container">
+<div  *ngIf="food && food.id" class="container">
   <img [src]="food.imageUrl" [alt]="food.name" />
 
   <div class="details">
