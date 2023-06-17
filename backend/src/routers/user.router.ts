@@ -102,7 +102,7 @@ const generateTokenResponse = (user: User) => {
     },
     process.env.JWT_SECRET!,
     {
-      expiresIn: "1m",
+      expiresIn: "1h",
     }
   );
   return {
