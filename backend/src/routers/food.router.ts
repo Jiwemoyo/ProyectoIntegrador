@@ -52,12 +52,12 @@ router.get("/",asyncHandler(
         }
       ]).sort({count: -1});
   
-      const all = {
+      /*const all = {
         name : 'Todo',
         count: await FoodModel.countDocuments()
       }
   
-      tags.unshift(all);
+      tags.unshift(all);*/
       res.send(tags);
     }
   ))

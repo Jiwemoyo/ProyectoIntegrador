@@ -22,7 +22,7 @@ export class PlatillosComponent {
   };
 
   tags = {
-    //All: true,
+    Todo: true,
     ComidaRapida: false,
     Postres: false,
     Almuerzos: false,
