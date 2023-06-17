@@ -53,7 +53,7 @@ router.get("/",asyncHandler(
       ]).sort({count: -1});
   
       const all = {
-        name : 'All',
+        name : 'Todo',
         count: await FoodModel.countDocuments()
       }
   

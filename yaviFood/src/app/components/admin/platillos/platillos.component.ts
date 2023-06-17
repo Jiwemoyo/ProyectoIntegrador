@@ -22,14 +22,14 @@ export class PlatillosComponent {
   };
 
   tags = {
-    All: false,
-    FastFood: false,
-    Pizza: false,
-    Lunch: false,
-    SlowFood: false,
-    Hamburger: false,
-    Fry: false,
-    Soup: false,
+    //All: true,
+    ComidaRapida: false,
+    Postres: false,
+    Almuerzos: false,
+    Desayunos: false,
+    Gourmet: false,
+    Jugos: false,
+    Sopas: false,
   };
 
   editing = false;

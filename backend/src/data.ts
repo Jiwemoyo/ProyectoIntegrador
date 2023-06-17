@@ -8,7 +8,7 @@ export const sample_foods: any[] = [
     origins: ['Ecuador'],
     stars: 4.5,
     imageUrl: 'assets/food-1.jpg',
-    tags: ['FastFood', 'Pizza', 'Lunch'],
+    tags: ['Sopas'],
   },
   {
     id:'2',
@@ -19,7 +19,7 @@ export const sample_foods: any[] = [
     origins: ['Ecuador', 'Quito'],
     stars: 4.7,
     imageUrl: 'assets/food-2.jpg',
-    tags: ['SlowFood', 'Lunch'],
+    tags: ['ComidaRapida'],
   },
   {
     id:'3',
@@ -30,7 +30,7 @@ export const sample_foods: any[] = [
     origins: ['Manabi'],
     stars: 3.5,
     imageUrl: 'assets/food-3.jpg',
-    tags: ['FastFood', 'Hamburger'],
+    tags: ['Almuerzos'],
   },
   {
     id:'4',
@@ -41,7 +41,7 @@ export const sample_foods: any[] = [
     origins: ['Ecuador'],
     stars: 3.3,
     imageUrl: 'assets/food-4.jpg',
-    tags: ['FastFood', 'Fry'],
+    tags: ['Desayunos'],
   },
   {
     id:'5',
@@ -52,7 +52,7 @@ export const sample_foods: any[] = [
     origins: ['Ecuador'],
     stars: 3.0,
     imageUrl: 'assets/food-5.jpg',
-    tags: ['SlowFood', 'Soup'],
+    tags: ['Gourmet'],
   },
   {
     id:'6',
@@ -63,19 +63,19 @@ export const sample_foods: any[] = [
     origins: ['Loja'],
     stars: 4.0,
     imageUrl: 'assets/food-6.jpg',
-    tags: ['FastFood', 'Pizza', 'Lunch'],
+    tags: ['Jugos'],
   },
 ]
 
 export const sample_tags:any[] = [
-  { name: 'Todo', count: 6 },
-  { name: 'FastFood', count: 4 },
-  { name: 'Pizza', count: 2 },
-  { name: 'Lunch', count: 3 },
-  { name: 'SlowFood', count: 2 },
-  { name: 'Hamburger', count: 1 },
-  { name: 'Fry', count: 1 },
-  { name: 'Soup', count: 1 },
+  { name: 'All', count: 6 },
+  { name: 'ComidaRapida', count: 4 },
+  { name: 'Postres', count: 2 },
+  { name: 'Almuerzos', count: 3 },
+  { name: 'Desayunos', count: 2 },
+  { name: 'Gourmet', count: 1 },
+  { name: 'Jugos', count: 1 },
+  { name: 'Sopas', count: 1 },
 ]
 
 export const sample_users: any[] = [
