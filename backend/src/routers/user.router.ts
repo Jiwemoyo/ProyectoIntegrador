@@ -84,7 +84,7 @@ router.get(
 router.get(
   "/profile",
   asyncHandler(async (req: AuthenticatedRequest, res) => {
-    if (req.user && !req.user.isAdmin) {
+    if (req.user) {
       // Lógica específica para el perfil del cliente
       res.send("Bienvenido a tu perfil de cliente");
     } else {
