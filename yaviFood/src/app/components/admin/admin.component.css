@@ -22,7 +22,10 @@
   .logo-food{
     color: #FFA07A;
   }
-  
+  .profile{
+    text-transform: uppercase;
+    color: #FD7238;
+  }
   .container{
     margin: 0 auto;
     display: flex;

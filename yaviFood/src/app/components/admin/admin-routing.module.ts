@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PlatillosComponent } from './platillos/platillos.component';
+import { AuthGuard } from 'src/app/auth/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
     children:[
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'crud', component: PlatillosComponent},
+      {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+      {path: 'crud', component: PlatillosComponent, canActivate:[AuthGuard]},
       {path: '', redirectTo:'dashboard', pathMatch:'full'},
      
       

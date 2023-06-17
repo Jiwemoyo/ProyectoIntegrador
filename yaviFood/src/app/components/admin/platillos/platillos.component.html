@@ -1,52 +1,71 @@
 <h1 class="title">Administrador de platillos</h1>
-<section>
-
-  <div>
+<section class="form-control row text-center">
+<div class="row">
+  <div class="col">
     <label for="nombre" class="sub">Nombre:</label>
-    <input type="text" id="nombre" [(ngModel)]="food.name" name="nombre" />
+    <input class="form-control" type="text" id="nombre" [(ngModel)]="food.name" name="nombre" />
   </div>
-  <div>
+  <div class="col">
     <label for="precio" class="sub">Precio:</label>
-    <input type="number" id="precio" [(ngModel)]="food.price" name="precio" />
+    <input class="form-control" type="number" id="precio" [(ngModel)]="food.price" name="precio" />
   </div>
-
-  <div class="tags">
-    <label class="sub">Etiquetas:</label> <br>
-    <!--<div for="" class="all">
-      Todo
-      <input type="checkbox" value="All" [(ngModel)]="tags.Todo" />
-    </div> -->
-    <div for="">
-      Comida rapida
-      <input type="checkbox" value="All" [(ngModel)]="tags.ComidaRapida" />
+  <div class="container row">
+    <div class="col jinson">
+      <h2 class="sub">Etiquetas:</h2>
+      <br>
     </div>
-    <div for="">
-      Postres
-      <input type="checkbox" value="All" [(ngModel)]="tags.Postres" />
-    </div>
-    <div for="">
-      Almuerzos
-      <input type="checkbox" value="All" [(ngModel)]="tags.Almuerzos" />
-    </div>
-     <div for="">
-      Desayunos
-      <input type="checkbox" value="All" [(ngModel)]="tags.Desayunos" />
-    </div>
-    <div for="">
-      Gourmet
-      <input type="checkbox" value="All" [(ngModel)]="tags.Gourmet" />
-    </div>
-    <div for="">
-      Jugos
-      <input type="checkbox" value="All" [(ngModel)]="tags.Jugos" />
-    </div>
-    <div for="">
-      Sopas
-      <input type="checkbox" value="All" [(ngModel)]="tags.Sopas" />
+    <div class="tags form-check">
+      <!--<div for="" class="all">
+        Todo
+        <input type="checkbox" value="All" [(ngModel)]="tags.Todo" />
+      </div> -->
+      <div for="" class="col">
+        <input class="form-check-input" id="uno" type="checkbox" value="All" [(ngModel)]="tags.ComidaRapida" />
+        <label class="form-check-label" for="uno">
+          Comida rapida
+        </label>
+      </div>
+      <div for="" class="col">
+        <input type="checkbox" class="form-check-input" id="dos" value="All" [(ngModel)]="tags.Postres" />
+        <label class="form-check-label" for="dos">
+          Postres
+        </label>
+      </div>
+      <div for="" class="col">
+        <input type="checkbox" class="form-check-input" id="tres" value="All" [(ngModel)]="tags.Almuerzos" />
+        <label class="form-check-label" for="tres">
+          Almuerzos
+        </label>
+      </div>
+       <div for="" class="col">
+        <input type="checkbox" value="All" class="form-check-input" id="cuatro" [(ngModel)]="tags.Desayunos" />
+        <label class="form-check-label" for="cuatro">
+          Desayunos
+        </label>
+      </div>
+      <div for="" class="col">
+        <input type="checkbox" value="All" class="form-check-input" id="cinco" [(ngModel)]="tags.Gourmet" />
+        <label class="form-check-label" for="Cinco">
+          Gourmet
+        </label>
+      </div>
+      <div for="" class="col">
+        <input type="checkbox" value="All" class="form-check-input" id="seis" [(ngModel)]="tags.Jugos" />
+        <label class="form-check-label" for="seis">
+          Jugos
+        </label>
+      </div>
+      <div for="" class="col">
+        <input type="checkbox" value="All" class="form-check-input" id="siete" [(ngModel)]="tags.Sopas" />
+        <label class="form-check-label" for="siete">
+          Sopas
+        </label>
+      </div>
     </div>
   </div>
-  <div>
-    <label for="estrellas" class="sub">Estrellas:</label>
+  
+  <div class="col-6">
+    <label for="estrellas" class="sub">Calificacion:</label>
     <input
       type="number"
       min="1"
@@ -54,32 +73,38 @@
       id="estrellas"
       [(ngModel)]="food.stars"
       name="stars"
+      class="form-control"
     />
   </div>
-  <div>
+  <div class="col-6 ">
+    <label for="origen" class="sub">Origen:</label>
+    <input class="form-control" type="text" id="origen" [(ngModel)]="food.origins[0]" name="origin" />
+  </div>
+  <div class="col-6">
     <label for="imagen" class="sub">Imagen:</label>
     <input
       type="text"
       id="imagen"
       [(ngModel)]="food.imageUrl"
       name="imageUrl"
+      class="form-control"
     />
   </div>
-  <div>
-    <label for="origen" class="sub">Origen:</label>
-    <input type="text" id="origen" [(ngModel)]="food.origins[0]" name="origin" />
-  </div>
-  <div>
+
+  <div class="col-6">
     <label for="tiempo" class="sub">Tiempo de cocción:</label>
     <input
       type="text"
       id="tiempo"
       [(ngModel)]="food.cookTime"
       name="cookTime"
+      class="form-control"
     />
   </div>
+</div>
+
   <form>
-    <input class="button" type="submit" value="CREAR" (click)="createOrUpdateFood()" />
+    <input class="button btn btn-success" type="submit" value="CREAR" (click)="createOrUpdateFood()" />
   </form>
 </section>
 

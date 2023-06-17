@@ -13,10 +13,14 @@ section {
   color: #FFA07A;
 }
 
+.jinson h2{
+  text-align: left;
+  margin-left: 50px;
+}
 .tags {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  margin-left: 50px;
 }
 
 .tags > div {
@@ -51,9 +55,9 @@ input{
 
 }
 
+
 .button {
-  margin-top: 3rem;
-  margin-left: 25rem;
+  margin-top: 50px;
   background-color: #FFA07A;
   color: white;
   padding: 10px 100px;
