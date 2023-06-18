@@ -15,7 +15,7 @@ import { PagesComponent } from './components/pages/pages.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/cliente', pathMatch: 'full' },
-  { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: '**', component: NoFoundPageComponent },
 ];
 

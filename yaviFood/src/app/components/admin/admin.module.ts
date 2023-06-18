@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { PlatillosComponent } from './platillos/platillos.component';
 import { FormsModule } from '@angular/forms';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     PlatillosComponent,
+    UsuariosComponent,
   ],
   imports: [
     CommonModule,
