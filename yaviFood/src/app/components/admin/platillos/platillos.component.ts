@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FoodService } from 'src/app/services/food.service';
 import { Food } from 'src/app/shared/models/Food';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-platillos',
@@ -66,18 +67,51 @@ export class PlatillosComponent {
   }
 
   createFood() {
+    if (this.isFormEmpty()) {
+      Swal?.fire({
+        icon: 'error',
+        title: 'Campos vacíos',
+        text: 'No se puede crear el platillo con campos vacíos.',
+        timer: 2000,
+      });
+      return;
+    }
+    
     this.getTags();
     this.foodService.createFood(this.food).subscribe((res) => {
       this.resetForm();
       this.getFoods();
-      console.log(res);
+      Swal?.fire({
+        icon: 'success',
+        title: 'Platillo creado',
+        text: 'El platillo se creó correctamente.',
+        timer: 2000,
+      });
     });
+  }
+  
+  isFormEmpty(): boolean {
+    return (
+      !this.food.name ||
+      !this.food.price ||
+      !this.food.cookTime ||
+      !this.food.stars ||
+      !this.food.imageUrl ||
+      this.food.origins.length === 0 ||
+      !this.food.tags
+    );
   }
 
   updateFood() {
     this.foodService.updateFood(this.food).subscribe(() => {
       this.resetForm();
       this.getFoods();
+      Swal.fire({
+        icon: 'success',
+        title: 'Platillo actualizado',
+        text: 'El platillo se actualizó correctamente.',
+        timer: 2000,
+      });
     });
   }
 
