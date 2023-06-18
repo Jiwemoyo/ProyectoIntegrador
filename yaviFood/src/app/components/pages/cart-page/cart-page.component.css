@@ -2,8 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin: 1.5rem;
-  margin-top: 0.5rem;
 }
 
 ul{
@@ -16,6 +14,11 @@ ul{
   list-style: none;
   margin: 0.5rem;
   padding: 0;
+}
+a{
+  text-decoration: none;
+  list-style: none;
+  color: #000000;
 }
 
 ul li{

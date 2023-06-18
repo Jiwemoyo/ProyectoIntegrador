@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
   }
   a {
     text-decoration: none;
@@ -66,6 +67,7 @@
   body {
     background: var(--grey);
     overflow-x: hidden;
+    
   }
   /* SIDEBAR */
   #sidebar {
@@ -80,6 +82,7 @@
     transition: .3s ease;
     overflow-x: hidden;
     scrollbar-width: none;
+    border: 1px solid black;
   }
   #sidebar::--webkit-scrollbar {
     display: none;
@@ -179,8 +182,11 @@
   #content {
     position: relative;
     width: calc(100% - 280px);
-    left: 280px;
+    left: 180px;
+    right: auto;
     transition: .3s ease;
+    overflow: hidden;
+    overflow: unset;
   }
   #sidebar.hide ~ #content {
     width: calc(100% - 60px);

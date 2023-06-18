@@ -1,25 +1,20 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
 header{
   position: relative;
   background: white;
-  padding: 0;
   z-index: 99;
   
 }
-.container{
-  display: flex;
-  justify-content: space-between;
-  margin-right: 160px;
-  margin-left: 160px;
-  margin-top: 24px;
-}
+
 .logo{
   display: flex;
   align-items: center;
+  font-family: 'Lobster', cursive;
 
 }
 .logo-yavi{
-  color: #1E2838;
+  color: #000000;
+  font-weight: bold;
 
 }
 .logo-food{
@@ -43,10 +38,10 @@ ul{
 }
 
 ul a{
-  padding: 1rem;
+  padding: 0 1rem;
   display: inline-block;
   font-weight: bold;
-  color: #FFA07A;
+  color: #000000;
 }
 
 ul a:hover{
@@ -54,31 +49,25 @@ ul a:hover{
 }
 
 ul .profile{
-  color: #FFDB58;
+  color: #FFA07A;
   text-transform: uppercase;
 
 }
-ul .cart{
-  color: #FFA07A;
-  text-transform: uppercase;
-}
+
 ul .login{
   background-color: #FFDB58;
   border-radius:30px;
   color: black;
-  padding: 16px 25px;
 }
 
 .canrQuantity{
-  background: #FFDB58;
-  color: white;
-  padding: 0.1rem 0.45rem;
   border-radius: 100rem;
   font-size:0.9rem;
 }
 
 .menu-container{
   position: relative;
+  
 }
 
 .menu{
@@ -86,13 +75,31 @@ ul .login{
   z-index:1;
   background:whitesmoke;
   display: none;
+  border-radius: 1px;
+  padding: 10px 15px;
 }
 
 .menu-container:hover .menu{
   display: block;
+  border: #FFA07A solid 1px;
 }
 
 .menu a{
   width: 100%;
   min-width:8rem;
+  padding: 0.9rem;
+}
+.menu a:hover{
+  background-color: #FFA07A;
+}
+.noti{
+  color: red;
+  padding-top: 15px;
+}
+.menu .btn,.btn-outline-success{
+  width: 100%;
+  border-radius: 0%;
+  border: #FFA07A solid 1px;
+  color: black;
+  font-weight: bolder;
 }

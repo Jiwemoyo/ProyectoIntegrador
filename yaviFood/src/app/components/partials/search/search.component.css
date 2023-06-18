@@ -1,8 +1,9 @@
 div{
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
+  z-index: 200;
 
 }
 

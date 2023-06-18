@@ -1,10 +1,22 @@
 <header>
+  
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <a routerLink="/" class="logo"><img src="/assets/logoyavifood.png" alt=""><span class="logo-yavi">Yavi</span> <span class="logo-food">Food</span> </a>
-    <nav>
+    <a routerLink="/" class="logo navbar-brand"><span class="logo-yavi">Yavi</span> <span class="logo-food">Food</span> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Menu</a>
+      </ul>
       <ul>
-        <li *ngIf="!isAuth">
-          <a class="login" routerLink="/login">LOGIN</a>
+        <li *ngIf="!isAuth" class="nav-item">
+          <a class="btn btn-outline nav-link" routerLink="/login">LOGIN</a>
         </li>
         <li  *ngIf="isAuth" class="menu-container">
           
@@ -12,15 +24,18 @@
           <div class="menu">
             <a routerLink="/admin">Dashboard</a>
             <a routerLink="/orders">Ordenes</a>
-            <a (click)="logout()">Salir</a>
+            <button class="btn btn-outline" (click)="logout()">Salir <i class="bi bi-box-arrow-right"></i></button>
           </div>
         </li>
-        <li>
-          <a  class="cart" routerLink="/cart-page">
-            Pedido <span *ngIf="cartQuantity">{{cartQuantity}}</span>
+        <li class="nav-item">
+          <a  class="nav-link" routerLink="/cart-page">
+            PEDIDO <span class="noti" *ngIf="cartQuantity">{{cartQuantity}}</span>
           </a>
         </li>
       </ul>
-    </nav>
+    </div>
   </div>
+</nav>
+
+
 </header>

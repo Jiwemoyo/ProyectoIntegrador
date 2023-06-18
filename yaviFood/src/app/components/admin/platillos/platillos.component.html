@@ -1,5 +1,6 @@
-<h1 class="title">Administrador de platillos</h1>
-<section class="form-control row text-center">
+<div class="container row">
+  <h1 class="title">Administrador de platillos</h1>
+<section class="form-control row text-center col">
 <div class="row">
   <div class="col">
     <label for="nombre" class="sub">Nombre:</label>
@@ -107,4 +108,19 @@
     <input class="button btn btn-success" type="submit" value="CREAR" (click)="createOrUpdateFood()" />
   </form>
 </section>
+<section>
+  <table>
+    <tr *ngFor="let food of foods">
+      <td>{{ food.name }}</td>
+      <td>{{ food.price }}</td>
+      <!-- Mostrar otros campos según sea necesario -->
+      <td>
+        <button class="btn btn-primary" (click)="editFood(food)">Editar</button>
+        <button class="btn btn-danger" (click)="deleteFood(food.id)">Eliminar</button>
+      </td>
+    </tr>
+  </table>
+</section>
 
+
+</div>
