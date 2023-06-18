@@ -1,32 +1,37 @@
-<div class="container">
-  <div class="details">
-    <app-title title="Bienvenido de vuelta"></app-title>
-    <br>
-
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
-      <text-input
-        [control]="fc.email"
-        [showErrorsWhen]="isSubmitted"
-        type="email"
-        label="Email"
-      >
-      </text-input>
-
-      <text-input
-        [control]="fc.password"
-        [showErrorsWhen]="isSubmitted"
-        type="password"
-        label="Password"
-      >
-      </text-input>
-
-      <default-button text="Login"></default-button>
-      <div class="register">
-        ¿Aun no tienes cuenta? &nbsp;
-        <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }">
-          Registrate aqui
-        </a>
+<section class="vh-100 container">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://img.freepik.com/free-photo/top-view-table-full-delicious-food-assortment_23-2149141340.jpg?w=996&t=st=1687113187~exp=1687113787~hmac=51acf8a3e1e9c60a69617b7bfd93bf37118bf78eabb96f1c6ddaf1f303789db8" class="img-fluid"
+          alt="Sample image">
       </div>
-    </form>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+          <div class="align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0">Bienvenido</p>
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <text-input [control]="fc.email" [showErrorsWhen]="isSubmitted" type="email" label="Email">
+            </text-input>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <text-input [control]="fc.password" [showErrorsWhen]="isSubmitted" type="password" label="Password">
+            </text-input>
+          </div>
+
+          <div class="text-center mt-4 pt-2">
+            <default-button text="Login"></default-button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">¿Aun no tienes cuenta? <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }" class="link-danger">Registrate</a>
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+
+</section>

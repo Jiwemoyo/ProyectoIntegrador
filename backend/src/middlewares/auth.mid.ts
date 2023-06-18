@@ -7,11 +7,14 @@ export default (req: any, res: any, next: any) => {
 
     try {
         const decodedUser = verify(token, process.env.JWT_SECRET!) as any;
-        const user = { ...decodedUser, isAdmin: decodedUser.isAdmin };
-        req.user = user;
+        req.user = decodedUser;
+        //const user = { ...decodedUser, isAdmin: decodedUser.isAdmin };
+        //req.user = user;
 
     } catch (error) {
-        res.status(HTTP_UNAUTHORIZED).send();
+        console.log("algo anda mal")
+        return res.status(HTTP_UNAUTHORIZED).send("Token inválido o expirado");
+        
     }
 
     return next();

@@ -6,13 +6,12 @@ import { Order } from 'src/app/shared/models/Order';
   templateUrl: './order-items-list.component.html',
   styleUrls: ['./order-items-list.component.css']
 })
-export class OrderItemsListComponent implements OnInit {
+export class OrderItemsListComponent  {
 
   @Input()
   order!:Order;
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
 }

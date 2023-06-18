@@ -13,7 +13,7 @@ asyncHandler(async (req:any, res:any) => {
     const requestOrder = req.body;
 
     if(requestOrder.items.length <= 0){
-        res.status(HTTP_BAD_REQUEST).send('Cart Is Empty!');
+        res.status(HTTP_BAD_REQUEST).send('¡El carrito esta vacío!');
         return;
     }
 
@@ -30,7 +30,8 @@ asyncHandler(async (req:any, res:any) => {
 
 
 router.get('/newOrderForCurrentUser', asyncHandler( async (req:any,res ) => {
-    const order= await getNewOrderForCurrentUser(req);
+    //const order= await getNewOrderForCurrentUser(req);
+    const order = await OrderModel.findOne({user: req.user.id, status: OrderStatus.NEW})
     if(order) res.send(order);
     else res.status(HTTP_BAD_REQUEST).send();
 }))
@@ -58,5 +59,8 @@ router.get('/track/:id', asyncHandler( async (req, res) => {
 export default router;
 
 async function getNewOrderForCurrentUser(req: any) {
+    if (!req.user || !req.user.id){
+        return null;
+    }
     return await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
 }
