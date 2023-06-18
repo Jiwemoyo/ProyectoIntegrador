@@ -9,11 +9,11 @@ import { Order } from 'src/app/shared/models/Order';
 declare var paypal: any;
 
 @Component({
-  selector: 'paypal-button',
-  templateUrl: './paypal-button.component.html',
-  styleUrls: ['./paypal-button.component.css']
+  selector: 'app-paypal',
+  templateUrl: './paypal.component.html',
+  styleUrls: ['./paypal.component.css']
 })
-export class PaypalButtonComponent implements OnInit {
+export class PaypalComponent implements OnInit {
   @Input()
   order!:Order;
 

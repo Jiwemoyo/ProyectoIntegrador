@@ -4,10 +4,14 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { PaymentComponent } from './payment/payment.component';
+import { PaypalComponent } from '../partials/paypal/paypal.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,
