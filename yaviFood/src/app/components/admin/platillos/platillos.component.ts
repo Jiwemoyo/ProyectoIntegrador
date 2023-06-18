@@ -114,4 +114,6 @@ export class PlatillosComponent {
   ngOnInit() {
     this.getFoods();
   }
+  
+
 }

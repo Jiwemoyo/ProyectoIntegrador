@@ -3,7 +3,12 @@ header{
   position: relative;
   background: white;
   z-index: 99;
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding-bottom: -10px;
 }
 
 .logo{

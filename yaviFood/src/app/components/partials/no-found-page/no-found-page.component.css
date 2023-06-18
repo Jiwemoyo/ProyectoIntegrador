@@ -1,3 +1,6 @@
+.container{
+  margin-top: 100px;
+}
 .fundo{
     animation: scales 3s alternate  infinite;
     transform-origin: center;
@@ -55,8 +58,7 @@
   
   
   .main{
-    
-    min-height: 600px;
+    min-height: 400px;
     margin: 0px auto;
     width: auto;
     max-width: 460px;

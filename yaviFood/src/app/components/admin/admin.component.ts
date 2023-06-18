@@ -20,13 +20,6 @@ export class AdminComponent {
       this.user = newUser;
     })
   }
-  //Sidebar toggle show hide function
-status = false;
-addToggle()
-{
-  this.status = !this.status;       
-}
-
   ngOnInit(): void {
 
   }
@@ -38,4 +31,5 @@ addToggle()
   get isAuth(){
     return this.user.token;
   }
+  
 }

@@ -1,126 +1,138 @@
-<div class="container row">
-  <h1 class="title">Administrador de platillos</h1>
-<section class="form-control row text-center col">
-<div class="row">
-  <div class="col">
-    <label for="nombre" class="sub">Nombre:</label>
-    <input class="form-control" type="text" id="nombre" [(ngModel)]="food.name" name="nombre" />
-  </div>
-  <div class="col">
-    <label for="precio" class="sub">Precio:</label>
-    <input class="form-control" type="number" id="precio" [(ngModel)]="food.price" name="precio" />
-  </div>
-  <div class="container row">
-    <div class="col jinson">
-      <h2 class="sub">Etiquetas:</h2>
-      <br>
+<section id="content">
+  <div>
+    <div class="head-title">
+      <div class="left">
+        <h1>Platillos</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right'></i></li>
+          <li>
+            <a class="active" href="#">Crud</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="tags form-check">
-      <!--<div for="" class="all">
-        Todo
-        <input type="checkbox" value="All" [(ngModel)]="tags.Todo" />
-      </div> -->
-      <div for="" class="col">
-        <input class="form-check-input" id="uno" type="checkbox" value="All" [(ngModel)]="tags.ComidaRapida" />
-        <label class="form-check-label" for="uno">
-          Comida rapida
-        </label>
+  </div>
+</section>
+
+<div class="container-fluid row mb-3">
+  <div class="col-4 formulario">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre:</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="food.name" name="nombre">
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <label for="prices" class="form-label">Precio:</label>
+        <input type="number"
+        [(ngModel)]="food.price" name="precio" class="form-control" placeholder="10">
       </div>
-      <div for="" class="col">
-        <input type="checkbox" class="form-check-input" id="dos" value="All" [(ngModel)]="tags.Postres" />
-        <label class="form-check-label" for="dos">
-          Postres
-        </label>
+      <div class="col">
+        <label for="tiempo" class="form-label">Tiempo Coccion:</label>
+        <input type="text"
+        id="tiempo"
+        [(ngModel)]="food.cookTime"
+        name="cookTime"
+        name="imageUrl" class="form-control" placeholder="10m - 20m">
       </div>
-      <div for="" class="col">
+    </div>
+    <div class="row mb3">
+      <div class="col">
+        <label for="starts" class="form-label">Estrellas:</label>
+        <input type="number"
+        min="1"
+        max="5"
+        id="estrellas"
+        [(ngModel)]="food.stars"
+        name="stars" class="form-control" placeholder="4.5" aria-label="Estrellas">
+      </div>
+      <div class="col">
+        <label for="image" class="form-label">Url Imagen:</label>
+        <input type="text"
+        id="imagen"
+        [(ngModel)]="food.imageUrl"
+        name="imageUrl" class="form-control" placeholder="https://imagen.bonita.com">
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="origins" class="form-label">Origen:</label>
+      <input class="form-control" type="text" id="origen" [(ngModel)]="food.origins[0]" name="origin" placeholder="Ecuador">
+    </div>
+    <div class="row container">
+      <label for="category" class="form-label">Categorias:</label>
+      <div class="mb-3 form-check col-6">
+        <input type="checkbox" class="form-check-input"  id="uno" value="All" [(ngModel)]="tags.ComidaRapida">
+        <label class="form-check-label" for="uno">ComidaRapida</label>
+      </div>
+      <div class="mb-3 form-check col-6">
+        <input type="checkbox" class="form-check-input" id="dos" value="All" [(ngModel)]="tags.Postres">
+        <label class="form-check-label" for="exampleCheck1">Postres</label>
+      </div>
+      <div class="mb-3 form-check col-6">
         <input type="checkbox" class="form-check-input" id="tres" value="All" [(ngModel)]="tags.Almuerzos" />
         <label class="form-check-label" for="tres">
           Almuerzos
         </label>
       </div>
-       <div for="" class="col">
+      <div class="mb-3 form-check col-6">
         <input type="checkbox" value="All" class="form-check-input" id="cuatro" [(ngModel)]="tags.Desayunos" />
         <label class="form-check-label" for="cuatro">
           Desayunos
         </label>
       </div>
-      <div for="" class="col">
+      <div class="mb-3 form-check col-6">
         <input type="checkbox" value="All" class="form-check-input" id="cinco" [(ngModel)]="tags.Gourmet" />
         <label class="form-check-label" for="Cinco">
           Gourmet
         </label>
       </div>
-      <div for="" class="col">
+      <div class="mb-3 form-check col">
         <input type="checkbox" value="All" class="form-check-input" id="seis" [(ngModel)]="tags.Jugos" />
         <label class="form-check-label" for="seis">
           Jugos
         </label>
       </div>
-      <div for="" class="col">
+      <div class="mb-3 form-check col">
         <input type="checkbox" value="All" class="form-check-input" id="siete" [(ngModel)]="tags.Sopas" />
         <label class="form-check-label" for="siete">
           Sopas
         </label>
       </div>
     </div>
+    <form class="botones">
+      <input class="btn btn-outline-success" type="submit" value="{{ editing ? 'Guardar' : 'Crear' }}" (click)="createOrUpdateFood()" />
+      <button *ngIf="editing" class="btn btn-outline-danger" type="button" (click)="cancelEditing()">Cancelar</button>
+    </form>
   </div>
-  
-  <div class="col-6">
-    <label for="estrellas" class="sub">Calificacion:</label>
-    <input
-      type="number"
-      min="1"
-      max="5"
-      id="estrellas"
-      [(ngModel)]="food.stars"
-      name="stars"
-      class="form-control"
-    />
-  </div>
-  <div class="col-6 ">
-    <label for="origen" class="sub">Origen:</label>
-    <input class="form-control" type="text" id="origen" [(ngModel)]="food.origins[0]" name="origin" />
-  </div>
-  <div class="col-6">
-    <label for="imagen" class="sub">Imagen:</label>
-    <input
-      type="text"
-      id="imagen"
-      [(ngModel)]="food.imageUrl"
-      name="imageUrl"
-      class="form-control"
-    />
-  </div>
+  <div class="col-8 p-4 lista">
+    <table class="table">
+      <thead class="table-warning">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Tiempo</th>
+          <th scope="col">Estrellas</th>
+          <th scope="col">Origen</th>
+          <th scope="col">Accciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of foods">
+          <td>{{ food.name }}</td>
+          <td>{{ food.price }}</td>
+          <td>{{ food.cookTime }}</td>
+          <td>{{ food.stars }}</td>
+          <td>{{ food.origins }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="editFood(food)"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-sm btn-danger" (click)="deleteFood(food.id)"><i class="bi bi-trash3"></i></button>
+          </td>
+        </tr>
 
-  <div class="col-6">
-    <label for="tiempo" class="sub">Tiempo de cocción:</label>
-    <input
-      type="text"
-      id="tiempo"
-      [(ngModel)]="food.cookTime"
-      name="cookTime"
-      class="form-control"
-    />
+      </tbody>
+    </table>
+
   </div>
-</div>
-
-  <form>
-    <input class="button btn btn-success" type="submit" value="CREAR" (click)="createOrUpdateFood()" />
-  </form>
-</section>
-<section>
-  <table>
-    <tr *ngFor="let food of foods">
-      <td>{{ food.name }}</td>
-      <td>{{ food.price }}</td>
-      <!-- Mostrar otros campos según sea necesario -->
-      <td>
-        <button class="btn btn-primary" (click)="editFood(food)">Editar</button>
-        <button class="btn btn-danger" (click)="deleteFood(food.id)">Eliminar</button>
-      </td>
-    </tr>
-  </table>
-</section>
-
-
 </div>
