@@ -6,6 +6,8 @@ import { PlatillosComponent } from './platillos/platillos.component';
 import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
+import { PagoComponent } from './pago/pago.component';
+import { PagoPaypalComponent } from './pago-paypal/pago-paypal.component';
 
 
 
@@ -15,6 +17,8 @@ import { PerfilesComponent } from './perfiles/perfiles.component';
     PlatillosComponent,
     UsuariosComponent,
     PerfilesComponent,
+    PagoComponent,
+    PagoPaypalComponent,
   ],
   imports: [
     CommonModule,

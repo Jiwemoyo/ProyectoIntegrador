@@ -32,10 +32,10 @@ import { NoFoundPageComponent } from './components/partials/no-found-page/no-fou
 import { AdminComponent } from './components/admin/admin.component';
 import { SidebardComponent } from './components/partials/sidebard/sidebard.component';
 import { PagesComponent } from './components/pages/pages.component';
-import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminModule } from './components/admin/admin.module';
 import { PaypalComponent } from './components/partials/paypal/paypal.component';
+import { PagesModule } from './components/pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -64,6 +64,7 @@ import { PaypalComponent } from './components/partials/paypal/paypal.component';
     SidebardComponent,
     PagesComponent,
     PresentationComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +74,7 @@ import { PaypalComponent } from './components/partials/paypal/paypal.component';
     HttpClientModule,
     ReactiveFormsModule,
     AdminModule,
+    PagesModule,
     ToastrModule.forRoot({
       timeOut:3000,
       positionClass:'toast-bottom-right',
@@ -87,4 +89,4 @@ import { PaypalComponent } from './components/partials/paypal/paypal.component';
 })
 export class AppModule { }
 
-//comentando para no perderlo
+

@@ -12,11 +12,13 @@ import { NoFoundPageComponent } from './components/partials/no-found-page/no-fou
 import { AdminRoutingModule } from './components/admin/admin-routing.module';
 import { PagesRoutingModule } from './components/pages/pages-routing.module';
 import { PagesComponent } from './components/pages/pages.component';
+import { PaypalComponent } from './components/partials/paypal/paypal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/cliente', pathMatch: 'full' },
   { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: '**', component: NoFoundPageComponent },
+  
 ];
 
 @NgModule({

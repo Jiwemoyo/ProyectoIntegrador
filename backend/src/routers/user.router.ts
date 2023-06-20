@@ -92,6 +92,84 @@ router.get(
     }
   })
 );
+// Obtener todos los usuarios
+router.get(
+  "/users",
+  asyncHandler(async (req: Request, res: Response) => {
+    const users = await UserModel.find();
+    res.send(users);
+  })
+);
+
+// Obtener un usuario por su ID
+router.get(
+  "/users/:id",
+  asyncHandler(async (req: Request, res: Response) => {
+    const user = await UserModel.findById(req.params.id);
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(HTTP_BAD_REQUEST).send("Usuario no encontrado");
+    }
+  })
+);
+
+// Crear un nuevo usuario
+router.post(
+  "/users",
+  asyncHandler(async (req: Request, res: Response) => {
+    const { name, email, password, address } = req.body;
+    const encryptedPassword = await bcrypt.hash(password, 10);
+
+    const newUser: User = {
+      id: "",
+      name,
+      email: email.toLowerCase(),
+      password: encryptedPassword,
+      address,
+      isAdmin: false,
+      token: "",
+    };
+
+    const dbUser = await UserModel.create(newUser);
+    res.send(dbUser);
+  })
+);
+
+// Actualizar un usuario existente
+router.put(
+  "/users/:id",
+  asyncHandler(async (req: Request, res: Response) => {
+    const { name, email, address } = req.body;
+    const user = await UserModel.findById(req.params.id);
+
+    if (user) {
+      user.name = name;
+      user.email = email.toLowerCase();
+      user.address = address;
+
+      await user.save();
+      res.send(user);
+    } else {
+      res.status(HTTP_BAD_REQUEST).send("Usuario no encontrado");
+    }
+  })
+);
+
+// Eliminar un usuario
+router.delete(
+  "/users/:id",
+  asyncHandler(async (req: Request, res: Response) => {
+    const user = await UserModel.findById(req.params.id);
+
+    if (user) {
+      await UserModel.deleteOne({ _id: user._id });
+      res.send("Usuario eliminado exitosamente");
+    } else {
+      res.status(HTTP_BAD_REQUEST).send("Usuario no encontrado");
+    }
+  })
+);
 
 const generateTokenResponse = (user: User) => {
   const token = jwt.sign(
