@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
+import { Router } from '@angular/router';
+
 
 const USER_KEY = 'User';
 @Injectable({
@@ -16,7 +18,7 @@ export class UserService {
   private userSubject =
   new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable:Observable<User>;
-  constructor(private http:HttpClient, private toastrService:ToastrService) {
+  constructor(private http:HttpClient, private toastrService:ToastrService, private router: Router) {
     this.userObservable = this.userSubject.asObservable();
   }
 
@@ -27,25 +29,32 @@ export class UserService {
   }
   
 
-  login(userLogin:IUserLogin):Observable<User>{
-      return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
-        tap({
-          next: (user) =>{
-            this.setUserToLocalStorage(user);
-            this.userSubject.next(user);
-            this.toastrService.success(
-              `Bienvenido a YaviFood ${user.name}!`,
-              'Inicio de sesión exitosa'
-            )
-          },
-          error: (errorResponse) =>{
-            this.toastrService.error(errorResponse.error, 'Inicio de sesión erroneo');
-
+  login(userLogin: IUserLogin): Observable<User> {
+    return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+  
+          if (user.isAdmin) {
+            // Redireccionar al enlace del panel de control del administrador
+            this.router.navigateByUrl('/admin/dashboard');
+          } else {
+            // Redireccionar al enlace del perfil del cliente
+            this.router.navigateByUrl('/');
           }
-
-        })
-      );
+  
+          this.toastrService.success(
+            `Hola ${user.name}!`,
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Inicio de sesión erroneo');
+        }
+      })
+    );
   }
+  
 
 register(userRegiser:IUserRegister): Observable<User>{
   return this.http.post<User>(USER_REGISTER_URL, userRegiser).pipe(

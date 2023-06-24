@@ -8,6 +8,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
 import { PagoComponent } from './pago/pago.component';
 import { PagoPaypalComponent } from './pago-paypal/pago-paypal.component';
+import { OrderItemsListComponent } from '../partials/order-items-list/order-items-list.component';
+import { AppModule } from 'src/app/app.module';
 
 
 

@@ -1,23 +1,22 @@
 <div class="container">
-    <div class="content">
-      <div class="summary">
-        <div>
-          <h3>Name:</h3>
-          <span>{{order.name}}</span>
-        </div>
-        <div>
-          <h3>Address:</h3>
-          <span>{{order.address}}</span>
-        </div>
+  <div class="content">
+    <h2 class="text-center">Metodos de Pago</h2>
+    <div class="summary">
+      <div>
+        <h3>Mi nombre:</h3>
+        <p>{{order.name}}</p>
       </div>
-    </div>
-    <div class="map">
-    </div>
-    <div class="buttons-container">
+      <div>
+        <h3>Mi dirección:</h3>
+        <span>{{order.address}}</span>
+      </div>
+      <div>
+        <h3>Precio total:</h3>
+        <span>{{order.totalPrice}}</span>
+      </div>
       <div class="buttons">
-        <app-pago-paypal></app-pago-paypal>
+        <app-pago-paypal [order]="order"></app-pago-paypal>
       </div>
     </div>
   </div>
-  
-
+</div>
