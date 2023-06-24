@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 // import { User } from '../shared/models/user';
 import { IUserLogin } from '../shared/interfaces/IUseLogin';
 import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
+import { USERS_URL, USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { Router } from '@angular/router';
@@ -83,6 +83,25 @@ register(userRegiser:IUserRegister): Observable<User>{
     localStorage.removeItem(USER_KEY);
     window.location.reload();
   }
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(USERS_URL);
+  }
+
+  getUserById(userId: string): Observable<User> {
+    const url = `${USERS_URL}/${userId}`;
+    return this.http.get<User>(url);
+  }
+
+  updateUser(user: User): Observable<User> {
+    const url = `${USERS_URL}/${user.id}`;
+    return this.http.put<User>(url, user);
+  }
+
+  deleteUser(userId: string): Observable<any> {
+    const url = `${USERS_URL}/${userId}`;
+    return this.http.delete(url);
+  }
+
 
   private setUserToLocalStorage(user:User){
     localStorage.setItem(USER_KEY, JSON.stringify(user));

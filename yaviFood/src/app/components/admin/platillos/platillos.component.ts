@@ -122,9 +122,24 @@ export class PlatillosComponent {
 
   deleteFood(foodId: string) {
     this.foodService.deleteFood(foodId).subscribe(() => {
+      this.resetForm();
       this.getFoods();
+      Swal.fire({
+        icon: 'success',
+        title: 'Platillo eliminado',
+        text: 'Se eliminó correctamente',
+        timer: 2000,
+      });
+    }, (error) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Platillo eliminado',
+        text: 'Se eliminó correctamente',
+        timer: 2000,
+      });
     });
   }
+  
 
   cancelEditing() {
     this.resetForm();

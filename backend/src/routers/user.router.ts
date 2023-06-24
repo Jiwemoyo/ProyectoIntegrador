@@ -114,27 +114,6 @@ router.get(
   })
 );
 
-// Crear un nuevo usuario
-router.post(
-  "/users",
-  asyncHandler(async (req: Request, res: Response) => {
-    const { name, email, password, address } = req.body;
-    const encryptedPassword = await bcrypt.hash(password, 10);
-
-    const newUser: User = {
-      id: "",
-      name,
-      email: email.toLowerCase(),
-      password: encryptedPassword,
-      address,
-      isAdmin: false,
-      token: "",
-    };
-
-    const dbUser = await UserModel.create(newUser);
-    res.send(dbUser);
-  })
-);
 
 // Actualizar un usuario existente
 router.put(

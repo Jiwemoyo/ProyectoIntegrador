@@ -12,3 +12,34 @@
       </ul>
     </div>
   </div>
+  
+<div class="container-fluid row mb-3">
+
+  </div>
+  <div class="col-8 p-4 lista">
+    <table class="table">
+      <thead class="table-warning">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Es Admin</th>
+          <th scope="col">Accciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.isAdmin }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="updateUser(user)"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)"><i class="bi bi-trash3"></i></button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
