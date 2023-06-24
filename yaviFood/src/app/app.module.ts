@@ -36,6 +36,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminModule } from './components/admin/admin.module';
 import { PaypalComponent } from './components/partials/paypal/paypal.component';
 import { PagesModule } from './components/pages/pages.module';
+import { OrderTrackPageComponent } from './components/partials/order-track-page/order-track-page.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { PagesModule } from './components/pages/pages.module';
     SidebardComponent,
     PagesComponent,
     PresentationComponent,
-    PaypalComponent
+    PaypalComponent,
+    OrderTrackPageComponent
   ],
   imports: [
     BrowserModule,

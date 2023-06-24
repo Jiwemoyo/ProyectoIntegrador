@@ -10,6 +10,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { PagesComponent } from './pages.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PagoComponent } from '../admin/pago/pago.component';
+import { OrderTrackPageComponent } from '../partials/order-track-page/order-track-page.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
       {path:'register',component:RegisterPageComponent},
       {path:'checkout',component:CheckoutPageComponent, canActivate:[AuthGuard]},
       {path:'payment',component:PagoComponent, canActivate:[AuthGuard]},
+      {path:'track/:orderId',component:OrderTrackPageComponent, canActivate:[AuthGuard]},
     ]
   }
 ];

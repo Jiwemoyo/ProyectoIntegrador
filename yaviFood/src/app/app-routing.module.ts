@@ -15,7 +15,6 @@ import { PagesComponent } from './components/pages/pages.component';
 import { PaypalComponent } from './components/partials/paypal/paypal.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/cliente', pathMatch: 'full' },
   { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: '**', component: NoFoundPageComponent },
   

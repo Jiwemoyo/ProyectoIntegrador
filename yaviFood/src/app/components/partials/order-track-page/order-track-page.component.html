@@ -1,0 +1,19 @@
+<div class="container row">
+    <div class="content col-8" *ngIf="order">
+        <h1>Orden #{{order.id}}</h1>
+        <div class="details">
+            <div><strong>Fecha: </strong>{{order.createdAt | date:'medium'}} </div>
+            <div><strong>Nombre: </strong>{{order.name}} </div>
+            <div><strong>Dirección: </strong>{{order.address}} </div>
+            <div><strong>Estado: </strong>{{order.status}} </div>
+            <div *ngIf="order.paymentId">
+                <strong>PagoID: </strong>{{order.paymentId}}
+            </div>
+        </div>
+        <order-items-list [order]="order"></order-items-list>
+    </div>
+    <div class="col-4">
+        <app-title title="Dirección de envio"></app-title>
+    <map [order]="order" [readonly]="true"></map>
+    </div>
+</div>
