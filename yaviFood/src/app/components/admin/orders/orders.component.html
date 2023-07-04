@@ -1,0 +1,44 @@
+<div class="head-title">
+    <div class="left">
+      <h1>Ordenes</h1>
+      <ul class="breadcrumb">
+        <li>
+          <a>Dashboard</a>
+        </li>
+        <li><i class='bx bx-chevron-right'></i></li>
+        <li>
+          <a class="active">Pedidos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container-fluid row mb-3">
+    <div class="col-12 p-4 lista">
+      <table class="table">
+        <thead class="table-warning">
+          <tr>
+            <th scope="col">Orden#</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Ver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>
+              {{ order.id.toString().substring(0, 8) + '...' }}
+            </td>
+            <td>{{ order.name }}</td>
+            <td>{{ order.address }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                <button class="btn btn-sm btn-warning" (click)="redirectToOrderDetail(order.id.toString())"><i class="bi bi-pencil-square"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

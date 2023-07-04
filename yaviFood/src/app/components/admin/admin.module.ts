@@ -10,6 +10,8 @@ import { PagoComponent } from './pago/pago.component';
 import { PagoPaypalComponent } from './pago-paypal/pago-paypal.component';
 import { OrderItemsListComponent } from '../partials/order-items-list/order-items-list.component';
 import { AppModule } from 'src/app/app.module';
+import { OrdersComponent } from './orders/orders.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 
 
@@ -21,6 +23,8 @@ import { AppModule } from 'src/app/app.module';
     PerfilesComponent,
     PagoComponent,
     PagoPaypalComponent,
+    OrdersComponent,
+    UserOrdersComponent,
   ],
   imports: [
     CommonModule,

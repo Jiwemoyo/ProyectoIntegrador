@@ -27,7 +27,9 @@ export class UserService {
   public get currentUser():User{
     return this.userSubject.value;
   }
-  
+  public get currentUserId(): string {
+    return this.currentUser.id;
+  }
 
   login(userLogin: IUserLogin): Observable<User> {
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(

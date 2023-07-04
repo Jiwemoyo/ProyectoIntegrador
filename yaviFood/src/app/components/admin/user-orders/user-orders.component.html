@@ -1,0 +1,49 @@
+<div class="head-title">
+    <div class="left">
+      <h1>Mis Órdenes</h1>
+      <ul class="breadcrumb">
+        <li>
+          <a>Dashboard</a>
+        </li>
+        <li><i class="bx bx-chevron-right"></i></li>
+        <li>
+          <a class="active">Mis Órdenes</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container-fluid row mb-3">
+    <div class="col-12 p-4 lista">
+      <table class="table">
+        <thead class="table-warning">
+          <tr>
+            <th scope="col">Orden#</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Estado</th>
+            <th scope="col">PagoID</th>
+            <th scope="col">Ver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders" (click)="viewOrderDetail(order.id)">
+            <td>{{ order.id.toString().substring(0, 5) + '...' }}</td>
+            <td>{{ order.createdAt }}</td>
+            <td>{{ order.name }}</td>
+            <td>{{ order.address }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+              <div *ngIf="order.paymentId">
+                <strong>PagoID: </strong>{{ order.paymentId }}
+              </div>
+            </td>
+            <td> <button class="btn btn-sm btn-warning" (click)="viewOrderDetail(order.id)"><i class="bi bi-pencil-square"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+  
