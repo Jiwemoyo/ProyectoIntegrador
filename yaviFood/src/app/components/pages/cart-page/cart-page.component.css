@@ -100,12 +100,12 @@ li .remove-button:hover{
 }
 
 .foods-count::before{
-  content: 'Count: ';
+  content: 'Cantidad: ';
   color: grey;
 }
 
 .total-price::before{
-  content: 'Price: ';
+  content: 'Precio: ';
   color: grey;
 }
 
