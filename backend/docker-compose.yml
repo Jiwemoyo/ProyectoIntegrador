@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mybackend:
+    image: yavifoodbackend:1
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - target: 8085
+        published: 8085
+        protocol: tcp
+        mode: host
+    networks:
+      - desarrollo_net
+
+networks:
+  desarrollo_net:
+    external: true
+
+secrets:
+  db_dev_pass:
+    external: true  
