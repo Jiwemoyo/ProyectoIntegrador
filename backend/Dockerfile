@@ -3,7 +3,7 @@ FROM node:20
 WORKDIR /app
 
 COPY package*.json ./
-COPY .env ./
+COPY src.env ./
 
 RUN npm install
 
