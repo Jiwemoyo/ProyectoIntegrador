@@ -3,9 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Documentacion YaviFood</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+        }
+        .endpoint h2 {
+            color: #555;
+        }
+        .method {
+            margin-top: 5px;
+        }
+        .method pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    adsads
-</body>
+    <h1>API Documetacion</h1>
+    <h3>Bienvenido al backend de YaviFood</h3>
+
+    <H3>COMIDA</H3>
+
+    <div class="endpoint">
+        <h2>GET /api/foods/base</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Cargar datos base para comidas</p>
+            <pre>// Descripción del endpoint GET /api/foods/base</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/foods</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener todas las comidas</p>
+            <pre>// Descripción del endpoint GET /api/foods</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/foods/search/:searchTerm</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Buscar comidas por nombre</p>
+            <pre>// Descripción del endpoint GET /api/foods/search/:searchTerm</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/foods/tags</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener etiquetas de comidas más utilizadas</p>
+            <pre>// Descripción del endpoint GET /api/foods/tags</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/foods/tag/:tagName</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener comidas por etiqueta</p>
+            <pre>// Descripción del endpoint GET /api/foods/tag/:tagName</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/foods/:foodId</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener detalles de una comida por ID</p>
+            <pre>// Descripción del endpoint GET /api/foods/:foodId</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /api/foods</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Crear una nueva comida</p>
+            <pre>// Descripción del endpoint POST /api/foods</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>PUT /api/foods/:foodId</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Actualizar una comida existente por ID</p>
+            <pre>// Descripción del endpoint PUT /api/foods/:foodId</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>DELETE /api/foods/:foodId</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Eliminar una comida por ID</p>
+            <pre>// Descripción del endpoint DELETE /api/foods/:foodId</pre>
+        </div>
+    </div>
+
+    <H3>USUARIOS</H3>
+    <div class="endpoint">
+        <h2>GET /api/users/base</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Cargar datos base para usuarios</p>
+            <pre>// Descripción del endpoint GET /api/users/base</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /api/users/login</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Iniciar sesión de usuario</p>
+            <pre>// Descripción del endpoint POST /api/users/login</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /api/users/register</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Registrar un nuevo usuario</p>
+            <pre>// Descripción del endpoint POST /api/users/register</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/users/admin/dashboard</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Acceder al panel de control del administrador</p>
+            <pre>// Descripción del endpoint GET /api/users/admin/dashboard</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/users/profile</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Acceder al perfil del cliente</p>
+            <pre>// Descripción del endpoint GET /api/users/profile</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/users</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener todos los usuarios</p>
+            <pre>// Descripción del endpoint GET /api/users</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/users/:id</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener un usuario por su ID</p>
+            <pre>// Descripción del endpoint GET /api/users/:id</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>PUT /api/users/:id</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Actualizar un usuario existente por su ID</p>
+            <pre>// Descripción del endpoint PUT /api/users/:id</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>DELETE /api/users/:id</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Eliminar un usuario por su ID</p>
+            <pre>// Descripción del endpoint DELETE /api/users/:id</pre>
+        </div>
+    </div>
+
+    <H3>ORDENES</H3>
+    <div class="endpoint">
+        <h2>POST /api/orders/create</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Crear un nuevo pedido</p>
+            <pre>// Descripción del endpoint POST /api/orders/create</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/orders</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener todos los pedidos</p>
+            <pre>// Descripción del endpoint GET /api/orders</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/orders/newOrderForCurrentUser</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener el nuevo pedido para el usuario actual</p>
+            <pre>// Descripción del endpoint GET /api/orders/newOrderForCurrentUser</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/orders/user/:userId</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Obtener todos los pedidos de un usuario por ID</p>
+            <pre>// Descripción del endpoint GET /api/orders/user/:userId</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /api/orders/pay</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Pagar un pedido</p>
+            <pre>// Descripción del endpoint POST /api/orders/pay</pre>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/orders/track/:id</h2>
+        <div class="method">
+            <p><strong>Descripción:</strong> Seguir un pedido por ID</p>
+            <pre>// Descripción del endpoint GET /api/orders/track/:id</pre>
+        </div>
+    </div>
 </html>

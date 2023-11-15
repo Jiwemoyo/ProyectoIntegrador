@@ -1,22 +1,19 @@
-version: '3.8'
+version: '3'
 
 services:
-  mybackend:
-    image: yavifoodbackend:1
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
+  # Configuración del servicio para la aplicación Node.js
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node-app
     ports:
-      - target: 8085
-        published: 8085
-        protocol: tcp
-        mode: host
+      - "5000:5000"
+    env_file:
+      - .env
     networks:
-      - desarrollo_net
+      - my-network
 
 networks:
-  desarrollo_net:
-    external: true
-
-secrets:
-  db_dev_pass:
-    external: true  
+  my-network:
+    driver: bridge
