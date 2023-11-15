@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: node-app
     ports:
-      - "5000:5000"
+      - "7085:5000"
     env_file:
       - ./src/.env
     networks:
