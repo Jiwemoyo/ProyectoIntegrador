@@ -2,7 +2,8 @@ FROM node:20
 
 WORKDIR /angular
 
-COPY ./angular/package*.json ./
+COPY package*.json ./
+
 
 RUN npm install
 
