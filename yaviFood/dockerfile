@@ -6,6 +6,5 @@ COPY ./angular/package*.json ./
 
 RUN npm install
 
-COPY ./angular .
 
 CMD ["ng","serve"]
