@@ -1,0 +1,11 @@
+FROM node:20
+
+WORKDIR /angular
+
+COPY ./angular/package*.json ./
+
+RUN npm install
+
+COPY ./angular .
+
+CMD ["ng","serve"]

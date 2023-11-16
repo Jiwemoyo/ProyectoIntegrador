@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  # Configuración del servicio para la aplicación Node.js
+  fronEnd-YAVIFOOD:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fronEnd-YAVIFOOD
+    ports:
+      - "8085:4200"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
