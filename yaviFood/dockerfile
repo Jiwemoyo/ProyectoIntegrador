@@ -5,7 +5,7 @@ WORKDIR /angular
 COPY package*.json ./
 
 
-RUN npm install
+RUN npm install --force
 
 
 CMD ["ng","serve"]
