@@ -1,4 +1,4 @@
-FROM node:20 as build
+FROM node:20
 
 WORKDIR /usr/src/app
 
@@ -8,14 +8,7 @@ RUN npm install --force
 
 COPY . .
 
-RUN npm run build
 
-FROM nginx:alpine
-
-COPY --from=build /usr/src/app/dist/frontend /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["npm","start"]
+CMD ["ng","serve"]
 
 # Nginx se inicia automáticamente, no es necesario un CMD
