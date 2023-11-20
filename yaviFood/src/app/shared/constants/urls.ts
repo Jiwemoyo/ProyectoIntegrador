@@ -1,4 +1,4 @@
-const BASE_URL =  'http://localhost:8085';
+const BASE_URL =  'http://161.97.140.245:7085';
 
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const FOODS_TAGS_URL = FOODS_URL + '/tags';
