@@ -2,11 +2,11 @@ version: '3'
 
 services:
   # Configuración del servicio para la aplicación Node.js
-  fronEnd-YAVIFOOD:
+  yavidfood-front:
     build:
       context: .
       dockerfile: dockerfile
-    container_name: fronEnd-YAVIFOOD
+    container_name: yavifood
     ports:
       - "8085:80"
     networks:
