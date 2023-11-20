@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  food-back:
+    build:
+      context: ../backend
+      dockerfile: dockerfile-backend
+    container_name: YaviFood-Backend
+    ports:
+      - "7085:5000"  # Ajusta el puerto según la configuración de tu aplicación
+    env_file:
+      - backend/src/.env
+    networks:
+      - my-network
+
+  food-front:
+    build:
+      context: ../frontend
+      dockerfile: dockerfile-frontend
+    container_name: YaviFood-Frontend
+    ports:
+      - "8085:80"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

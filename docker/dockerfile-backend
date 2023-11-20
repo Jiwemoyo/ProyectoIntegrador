@@ -1,0 +1,16 @@
+FROM node:20
+
+WORKDIR /app
+
+COPY backend/package.json ./
+COPY backend/package-lock.json ./
+
+RUN npm install
+
+WORKDIR /app/backend
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["npm","start"]
