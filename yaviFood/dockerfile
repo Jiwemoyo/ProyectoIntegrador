@@ -11,4 +11,3 @@ COPY . .
 
 CMD ["npm","start"]
 
-# Nginx se inicia automáticamente, no es necesario un CMD
