@@ -5,10 +5,10 @@ services:
   fronEnd-YAVIFOOD:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: fronEnd-YAVIFOOD
     ports:
-      - "8085:4200"
+      - "8085:80"
     networks:
       - my-network
 
