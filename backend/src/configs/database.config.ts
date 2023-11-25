@@ -1,11 +1,15 @@
-import {connect, ConnectOptions} from 'mongoose';
+import { connect, ConnectOptions } from 'mongoose';
 
-export const dbConnect = () => {
-    connect(process.env.MONGO_URI!, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    } as ConnectOptions).then(
-        () => console.log("Base de datos conectada con exito"),
-        (error) => console.log(error)
-    )
-}
+export const dbConnect = async () => {
+    try {
+        await connect(process.env.MONGO_URI!, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        } as ConnectOptions);
+        console.log("Base de datos conectada con éxito");
+    } catch (error) {
+        console.error("Error al conectar a la base de datos:", error);
+        // Puedes lanzar el error aquí si quieres propagarlo a un nivel superior.
+        // throw error;
+    }
+};

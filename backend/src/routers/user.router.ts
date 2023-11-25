@@ -1,175 +1,225 @@
-import { Router, Request, Response, NextFunction } from "express";
-import { sample_users } from "../data";
-import jwt from "jsonwebtoken";
-import { User, UserModel } from "../models/user.models";
-import asyncHandler from "express-async-handler";
-import { HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED } from "../constants/http_status";
-import bcrypt from "bcryptjs";
-
+import { Router } from 'express';
+import * as UserController from '../controllers/user.controller';
+import asyncHandler from 'express-async-handler';
+import '../configs/definitions.swagger'
 const router = Router();
 
-interface AuthenticatedRequest extends Request {
-  user?: {
-    id: string;
-    email: string;
-    isAdmin: boolean;
-  };
-}
+// Cargar datos de usuarios
 
-router.get(
-  "/base",
-  asyncHandler(async (req, res) => {
-    const usersCount = await UserModel.countDocuments();
-    if (usersCount > 0) {
-      res.send("Base de usuario cargada anteriormente");
-      return;
-    }
+router.get('/base', asyncHandler(UserController.getBase));
 
-    await UserModel.create(sample_users);
-    res.send("Usuarios cargados");
-  })
-);
+router.post('/login', asyncHandler(UserController.login));
 
-router.post(
-  "/login",
-  asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
-    const user = await UserModel.findOne({ email });
+router.post('/register', asyncHandler(UserController.register));
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-      res.send(generateTokenResponse(user));
-    } else {
-      res.status(HTTP_BAD_REQUEST).send(" El email o password no son valido!");
-    }
-  })
-);
-router.post(
-  "/register",
-  asyncHandler(async (req, res) => {
-    const { name, email, password, address } = req.body;
-    const user = await UserModel.findOne({ email });
-    if (user) {
-      res.status(HTTP_BAD_REQUEST).send("Usuario ya existe, desea logearse");
-      return;
-    }
-    const encryptedPassword = await bcrypt.hash(password, 10);
+router.get('/admin/dashboard', asyncHandler(UserController.adminDashboard));
 
-    const newUser: User = {
-      id: "",
-      name,
-      email: email.toLowerCase(),
-      password: encryptedPassword,
-      address,
-      isAdmin: false,
-      token: "",
-    };
+router.get('/profile', asyncHandler(UserController.userProfile));
 
-    const dbUser = await UserModel.create(newUser);
-    res.send(generateTokenResponse(dbUser));
-  })
-);
+router.get('/users', asyncHandler(UserController.getAllUsers));
 
-router.get(
-  "/admin/dashboard",
-  asyncHandler(async (req: AuthenticatedRequest, res) => {
-    if (req.user && req.user.isAdmin) {
-      // Lógica específica para el panel de control del administrador
-      res.send("Bienvenido al panel de control de administrador");
-    } else {
-      res.status(HTTP_UNAUTHORIZED).send("Acceso no autorizado");
-    }
-  })
-);
+router.get('/users/:id', asyncHandler(UserController.getUserById));
 
-router.get(
-  "/profile",
-  asyncHandler(async (req: AuthenticatedRequest, res) => {
-    if (req.user) {
-      // Lógica específica para el perfil del cliente
-      res.send("Bienvenido a tu perfil de cliente");
-    } else {
-      res.status(HTTP_UNAUTHORIZED).send("Acceso no autorizado");
-    }
-  })
-);
-// Obtener todos los usuarios
-router.get(
-  "/users",
-  asyncHandler(async (req: Request, res: Response) => {
-    const users = await UserModel.find();
-    res.send(users);
-  })
-);
+router.put('/users/:id', asyncHandler(UserController.updateUser));
 
-// Obtener un usuario por su ID
-router.get(
-  "/users/:id",
-  asyncHandler(async (req: Request, res: Response) => {
-    const user = await UserModel.findById(req.params.id);
-    if (user) {
-      res.send(user);
-    } else {
-      res.status(HTTP_BAD_REQUEST).send("Usuario no encontrado");
-    }
-  })
-);
+router.delete('/users/:id', asyncHandler(UserController.deleteUser));
+
+/**
+ * @swagger
+ * tags:
+ *   name: Usuarios
+ *   description: Endpoints para la gestión de usuarios en YAVIFOOD
+ *   x-order: 1  # Orden 1
+ */
+
+/**
+ * @swagger
+ * /api/users/base:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Cargar base de usuarios
+ *     description: Verifica si la base de usuarios está cargada, y si no, la carga con ejemplos de usuarios.
+ *     responses:
+ *       200:
+ *         description: Base de usuarios cargada
+ *       500:
+ *         description: Error al cargar la base de usuarios
+ */
+
+/**
+ * @swagger
+ * /api/users/login:
+ *   post:
+ *     tags: [Usuarios]
+ *     summary: Iniciar sesión
+ *     requestBody:
+ *       description: Credenciales de inicio de sesión
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - email
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Inicio de sesión exitoso, devuelve el token de acceso
+ *       400:
+ *         description: Credenciales no válidas
+ */
+
+/**
+ * @swagger
+ * /api/users/register:
+ *   post:
+ *     tags: [Usuarios]
+ *     summary: Registrar un nuevo usuario
+ *     requestBody:
+ *       description: Datos del nuevo usuario
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               address:
+ *                  type: string
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Usuario registrado exitosamente
+ *       400:
+ *         description: Error al registrar el usuario
+ */
+
+/**
+ * @swagger
+ * /api/users/admin/dashboard:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Panel de control de administrador
+ *     responses:
+ *       200:
+ *         description: Bienvenido al panel de control de administrador
+ *       401:
+ *         description: Acceso no autorizado
+ */
+
+/**
+ * @swagger
+ * /api/users/profile:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Perfil de usuario
+ *     responses:
+ *       200:
+ *         description: Bienvenido a tu perfil de cliente
+ *       401:
+ *         description: Acceso no autorizado
+ */
+
+/**
+ * @swagger
+ * /api/users/users:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Obtener todos los usuarios
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ *       500:
+ *         description: Error al obtener usuarios
+ */
+
+/**
+ * @swagger
+ * /api/users/users/{id}:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Obtener información sobre un usuario por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Datos del usuario
+ *       400:
+ *         description: Usuario no encontrado
+ *
+ *   put:
+ *     tags: [Usuarios]
+ *     summary: Actualizar información de un usuario por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       description: Datos actualizados del usuario
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Usuario actualizado exitosamente
+ *       400:
+ *         description: Error al actualizar el usuario
+ *       401:
+ *         description: Acceso no autorizado
+ *
+ *   delete:
+ *     tags: [Usuarios]
+ *     summary: Eliminar un usuario por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Usuario eliminado exitosamente
+ *       400:
+ *         description: Error al eliminar el usuario
+ *       401:
+ *         description: Acceso no autorizado
+ */
 
 
-// Actualizar un usuario existente
-router.put(
-  "/users/:id",
-  asyncHandler(async (req: Request, res: Response) => {
-    const { name, email, address } = req.body;
-    const user = await UserModel.findById(req.params.id);
-
-    if (user) {
-      user.name = name;
-      user.email = email.toLowerCase();
-      user.address = address;
-
-      await user.save();
-      res.send(user);
-    } else {
-      res.status(HTTP_BAD_REQUEST).send("Usuario no encontrado");
-    }
-  })
-);
-
-// Eliminar un usuario
-router.delete(
-  "/users/:id",
-  asyncHandler(async (req: Request, res: Response) => {
-    const user = await UserModel.findById(req.params.id);
-
-    if (user) {
-      await UserModel.deleteOne({ _id: user._id });
-      res.send("Usuario eliminado exitosamente");
-    } else {
-      res.status(HTTP_BAD_REQUEST).send("Usuario no encontrado");
-    }
-  })
-);
-
-const generateTokenResponse = (user: User) => {
-  const token = jwt.sign(
-    {
-      id: user.id,
-      email: user.email,
-      isAdmin: user.isAdmin,
-    },
-    process.env.JWT_SECRET!,
-    {
-      expiresIn: "2d",
-    }
-  );
-  return {
-    id: user.id,
-    email: user.email,
-    name: user.name,
-    address: user.address,
-    isAdmin: user.isAdmin,
-    token: token,
-  };
-};
 
 export default router;

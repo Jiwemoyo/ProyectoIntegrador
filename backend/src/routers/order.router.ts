@@ -1,3 +1,9 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Pedidos
+ *   description: Endpoints para la gestión de pedidos
+ */
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 import { HTTP_BAD_REQUEST } from '../constants/http_status';
@@ -71,3 +77,173 @@ async function getNewOrderForCurrentUser(req: any) {
   }
   return await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
 }
+
+/**
+ * @swagger
+ * tags:
+ *   name: Pedidos
+ *   description: Endpoints para la gestión de pedidos en YAVIFOOD
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     LatLng:
+ *       type: object
+ *       properties:
+ *         lat:
+ *           type: string
+ *         lng:
+ *           type: string
+ *     OrderItem:
+ *       type: object
+ *       properties:
+ *         food:
+ *         price:
+ *           type: number
+ *         quantity:
+ *           type: number
+ */
+
+/**
+ * @swagger
+ * /api/orders/create:
+ *   post:
+ *     tags: [Pedidos]
+ *     summary: Crear un nuevo pedido
+ *     description: Crea un nuevo pedido para el usuario autenticado.
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       description: Datos del nuevo pedido
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               addressLatLng:
+ *               paymentId:
+ *                 type: string
+ *               items:
+ *                 type: array
+ *                 items:
+ *             required:
+ *               - name
+ *               - address
+ *               - addressLatLng
+ *               - paymentId
+ *               - items
+ *     responses:
+ *       200:
+ *         description: Pedido creado exitosamente
+ *       400:
+ *         description: El carrito está vacío
+ */
+
+/**
+ * @swagger
+ * /api/orders/:
+ *   get:
+ *     tags: [Pedidos]
+ *     summary: Obtener todos los pedidos
+ *     description: Obtiene todos los pedidos disponibles.
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de pedidos
+ */
+
+/**
+ * @swagger
+ * /api/orders/newOrderForCurrentUser:
+ *   get:
+ *     tags: [Pedidos]
+ *     summary: Obtener el nuevo pedido del usuario actual
+ *     description: Obtiene el nuevo pedido del usuario autenticado.
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Nuevo pedido del usuario actual
+ *       400:
+ *         description: Pedido no encontrado
+ */
+
+/**
+ * @swagger
+ * /api/orders/user/{userId}:
+ *   get:
+ *     tags: [Pedidos]
+ *     summary: Obtener pedidos por ID de usuario
+ *     description: Obtiene los pedidos asociados a un usuario por su ID.
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista de pedidos del usuario
+ */
+
+/**
+ * @swagger
+ * /api/orders/pay:
+ *   post:
+ *     tags: [Pedidos]
+ *     summary: Pagar un pedido
+ *     description: Paga un pedido pendiente de un usuario autenticado.
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       description: Datos de pago
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               paymentId:
+ *                 type: string
+ *             required:
+ *               - paymentId
+ *     responses:
+ *       200:
+ *         description: Pedido pagado exitosamente
+ *       400:
+ *         description: Pedido no encontrado
+ */
+
+/**
+ * @swagger
+ * /api/orders/track/{id}:
+ *   get:
+ *     tags: [Pedidos]
+ *     summary: Seguir un pedido por ID
+ *     description: Obtiene información sobre un pedido por su ID.
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del pedido
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Datos del pedido
+ *       404:
+ *         description: Pedido no encontrado
+ */

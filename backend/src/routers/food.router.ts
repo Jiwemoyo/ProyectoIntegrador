@@ -1,98 +1,203 @@
+// routers/food.router.ts
 import { Router } from 'express';
-import { sample_foods, sample_tags } from "../data";
-import asyncHandler from 'express-async-handler';
-import { FoodModel } from '../models/food.model';
+import * as FoodController from '../controllers/food.controller';
 
 const router = Router();
+router.get('/base', FoodController.getBase);
+router.get('/', FoodController.getAllFoods);
+router.get('/search/:searchTerm', FoodController.searchFoods);
+router.get('/tags', FoodController.getTags);
+router.get('/tag/:tagName', FoodController.getFoodsByTag);
+router.get('/:foodId', FoodController.getFoodById);
+router.post('/', FoodController.createFood);
+router.put('/:foodId', FoodController.updateFood);
+router.delete('/:foodId', FoodController.deleteFood);
+/**
+ * @swagger
+ * tags:
+ *   name: Alimentos
+ *   description: Endpoints para la gestión de platillos de comida
+ */
 
-router.get("/base", asyncHandler(
-    async(req, res) =>{
-        const foodsCount = await FoodModel.countDocuments();
-        if(foodsCount >0){
-            res.send("Base cargada anteriormente")
-            return;
-        }
-        await FoodModel.create(sample_foods);
-        res.send("Base cargada!")
-    }
-))
-router.get("/",asyncHandler(
-    async (req, res) => {
-      const foods = await FoodModel.find();
-        res.send(foods);
-    }
-  ))
+/**
+ * @swagger
+ * /api/foods/base:
+ *   get:
+ *     tags: [Alimentos]
+ *     summary: Cargar base de alimentos
+ *     description: Verifica si la base de alimentos está cargada, y si no, la carga con ejemplos de alimentos.
+ *     responses:
+ *       200:
+ *         description: Base de alimentos cargada
+ *       500:
+ *         description: Error al cargar la base de alimentos
+ */
 
-  router.get("/search/:searchTerm", asyncHandler(
-    async (req, res) => {
-      const searchRegex = new RegExp(req.params.searchTerm, 'i');
-      const foods = await FoodModel.find({name: {$regex:searchRegex}})
-      res.send(foods);
-    }
-  ))
+/**
+ * @swagger
+ * /api/foods:
+ *   get:
+ *     tags: [Alimentos]
+ *     summary: Obtener todos los alimentos
+ *     responses:
+ *       200:
+ *         description: Lista de alimentos
+ *       500:
+ *         description: Error al obtener alimentos
+ *   post:
+ *     summary: Crear un nuevo alimento
+ *     tags: [Alimentos]
+ *     requestBody:
+ *       description: Datos del nuevo alimento
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *               tags:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               favorite:
+ *                 type: boolean
+ *               stars:
+ *                 type: number
+ *               imageUrl:
+ *                 type: string
+ *               origins:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               cookTime:
+ *                 type: string
+ *             required:
+ *               - name
+ *               - price
+ *               - tags
+ *               - stars
+ *               - imageUrl
+ *               - origins
+ *               - cookTime
+ *     responses:
+ *       200:
+ *         description: Alimento creado exitosamente
+ *       400:
+ *         description: Error al crear el alimento
+ */
 
-  router.get("/tags", asyncHandler(
-    async (req, res) => {
-      const tags = await FoodModel.aggregate([
-        {
-          $unwind:'$tags'
-        },
-        {
-          $group:{
-            _id: '$tags',
-            count: {$sum: 1}
-          }
-        },
-        {
-          $project:{
-            _id: 0,
-            name:'$_id',
-            count: '$count'
-          }
-        }
-      ]).sort({count: -1});
-  
-      /*const all = {
-        name : 'Todo',
-        count: await FoodModel.countDocuments()
-      }
-  
-      tags.unshift(all);*/
-      res.send(tags);
-    }
-  ))
+/**
+ * @swagger
+ * /api/foods/search/{searchTerm}:
+ *   get:
+ *     tags: [Alimentos]
+ *     summary: Buscar alimentos por término
+ *     parameters:
+ *       - in: path
+ *         name: searchTerm
+ *         required: true
+ *         description: Término de búsqueda
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista de alimentos encontrados
+ *       500:
+ *         description: Error al buscar alimentos
+ */
 
-  router.get("/tag/:tagName",asyncHandler(
-    async (req, res) => {
-      const foods = await FoodModel.find({tags: req.params.tagName})
-      res.send(foods);
-    }
-  ))
-
-  //obtener
-  router.get("/:foodId", asyncHandler(
-    async (req, res) => {
-      const food = await FoodModel.findById(req.params.foodId);
-      res.send(food);
-    }
-  ))
-  //crear
-  router.post('/', asyncHandler(async(req, res)=> {
-    const newFood = req.body;
-    const createdFood = await FoodModel.create(newFood);
-    res.send(createdFood);
-  }))
-  //actualizar
-  router.put('/:foodId', asyncHandler(async(req, res)=> {
-    const updateFood = req.body;
-    const foodId = req.params.foodId;
-    const result = await FoodModel.findByIdAndUpdate(foodId, updateFood, {new: true});
-    res.send(result)
-  }));
-  router.delete('/:foodId', asyncHandler(async (req, res)=>{
-    const foodId = req.params.foodId;
-    await FoodModel.findByIdAndDelete(foodId);
-    res.send('Platillo eliminado exitosamente')
-  }))
+/**
+ * @swagger
+ * /api/foods/{foodId}:
+ *   get:
+ *     tags: [Alimentos]
+ *     summary: Obtener información sobre un alimento por ID
+ *     parameters:
+ *       - in: path
+ *         name: foodId
+ *         required: true
+ *         description: ID del alimento
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Datos del alimento
+ *       404:
+ *         description: Alimento no encontrado
+ *   put:
+ *     summary: Actualizar información de un alimento por ID
+ *     tags: [Alimentos]
+ *     parameters:
+ *       - in: path
+ *         name: foodId
+ *         required: true
+ *         description: ID del alimento
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       description: Datos actualizados del alimento
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *               tags:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               favorite:
+ *                 type: boolean
+ *               stars:
+ *                 type: number
+ *               imageUrl:
+ *                 type: string
+ *               origins:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               cookTime:
+ *                 type: string
+ *             required:
+ *               - name
+ *               - price
+ *               - tags
+ *               - stars
+ *               - imageUrl
+ *               - origins
+ *               - cookTime
+ *     responses:
+ *       200:
+ *         description: Alimento actualizado exitosamente
+ *       400:
+ *         description: Error al actualizar el alimento
+ *       404:
+ *         description: Alimento no encontrado
+ *   delete:
+ *     summary: Eliminar un alimento por ID
+ *     tags: [Alimentos]
+ *     parameters:
+ *       - in: path
+ *         name: foodId
+ *         required: true
+ *         description: ID del alimento
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Alimento eliminado exitosamente
+ *       400:
+ *         description: Error al eliminar el alimento
+ *       404:
+ *         description: Alimento no encontrado
+ */
 
 export default router;

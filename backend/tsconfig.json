@@ -1,12 +1,13 @@
 {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "moduleResolution": "node",
-      "strict": true,
-      "outDir": "./built",
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "esModuleInterop": true
-    },
-    "include": ["src/**/*"],
+  "compilerOptions": {
+    "module": "commonjs",  // Cambiar "CommonJS" a "commonjs"
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*", ".env"]
 }
