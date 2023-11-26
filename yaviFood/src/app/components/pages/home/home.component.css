@@ -1,17 +1,17 @@
-ul{
+ul {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
-  margin-left: 24px;
-  margin-right: 24px;
+  margin: 0;
 }
 
-li a{
-  height: 22.5rem;
-  width: 20rem;
+li a {
+  height: auto;
+  width: 18rem;
+  /* Adjusted width for better responsiveness */
   border: 1px solid whitesmoke;
   border-radius: 1rem;
   margin: 0.5rem;
@@ -21,78 +21,82 @@ li a{
   color: #FFA07A;
   text-transform: uppercase;
   font-weight: bolder;
-  box-shadow: 0px 10px 10px -2px rgba(0,0,0,0.26);
--webkit-box-shadow: 0px 10px 10px -2px rgba(0,0,0,0.26);
--moz-box-shadow: 0px 10px 10px -2px rgba(0,0,0,0.26);
+  -moz-box-shadow: 0px 10px 10px -2px rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: 0px 10px 10px -2px rgba(0, 0, 0, 0.26);
+  box-shadow: 0px 10px 10px -2px rgba(0, 0, 0, 0.26);
 }
 
-li a:hover{
+li a:hover {
   opacity: 0.9;
   cursor: pointer;
 }
 
-li a img{
+li a img {
   object-fit: cover;
-  height: 14.5rem;
+  width: 100%;
+  /* Make images responsive within their container */
+  height: 12rem;
+  /* Adjusted height for better responsiveness */
 }
 
-.content{
-  margin-top: 0.3rem;
-  padding: 0rem 1rem;
+.content {
+  padding: 0.5rem 1rem;
+  /* Adjusted padding for better spacing */
   position: relative;
-  height: 7rem;
 }
 
-.favorite{
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
+.favorite {
+  top: 0.2rem;
+  /* Adjusted top position */
+  right: 0.8rem;
+  /* Adjusted right position */
   font-size: 1.2rem;
-
 }
 
-.favorite.not{
+.favorite.not {
   color: rgb(128, 128, 128);
 }
 
-/* .stars{
-  margin-bottom: 0.2rem;
-} */
-
-.product-item-footer{
+.product-item-footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* Adjusted flex direction for better responsiveness */
   align-items: flex-start;
 }
 
-.origins{
-  flex: 9;
+.origins {
+  flex: 1;
+  margin-top: 0.5rem;
+  /* Adjusted margin for better spacing */
 }
 
-.origins span{
+.origins span {
   border-radius: 2rem;
   background-color: whitesmoke;
   display: inline-block;
   font-size: 0.8rem;
   color: grey;
-  margin-right: 0.3rem;
-  padding: 0 0.5rem;
-  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
+  /* Adjusted margin for better spacing */
+  padding: 0.2rem 0.5rem;
 }
 
-.cook-time{
+.cook-time {
   font-size: 0.9rem;
-  flex: 3;
-  text-align: right;
+  text-align: left;
+  /* Adjusted text alignment */
+  margin-top: 0.3rem;
+  /* Adjusted margin for better spacing */
 }
 
-.price{
+.price {
   position: absolute;
   bottom: 0;
   left: 0.9rem;
   background: white;
-  padding: 0.3rem 100% 0 0;
+  padding: 0.3rem 1rem;
   color: #414141;
   margin-top: 0.7rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  /* Adjusted font size */
 }

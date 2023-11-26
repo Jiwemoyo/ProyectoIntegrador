@@ -6,18 +6,20 @@ import { PlatillosComponent } from './platillos/platillos.component';
 import { AuthGuard } from 'src/app/auth/guards/auth.guard';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
-    children:[
-      {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-      {path: 'crud', component: PlatillosComponent, canActivate:[AuthGuard]},
-      {path: 'usuarios', component: UsuariosComponent, canActivate:[AuthGuard]},
-      {path: 'ordenes', component: OrdersComponent, canActivate:[AuthGuard]},
-      {path: '', redirectTo:'dashboard', pathMatch:'full'},
-     
-      
+    children: [
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'crud', component: PlatillosComponent, canActivate: [AuthGuard] },
+      { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
+      { path: 'ordenes', component: OrdersComponent, canActivate: [AuthGuard] },
+      { path: 'perfil', component: ProfileComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+
+
     ]
   }
 ];

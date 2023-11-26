@@ -170,6 +170,58 @@ export const deleteUser = async (req: Request, res: Response) => {
         res.status(400).json({ error: (error as Error).message });
     }
 };
+export const updateProfile = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+        const { name, address } = req.body;
+
+        if (!name || !address) {
+            res.status(400).json({ error: 'Name and address are required fields' });
+            return;
+        }
+
+        const user = await UserModel.findByIdAndUpdate(
+            req.user!.id,
+            { name, address },
+            { new: true }
+        );
+
+        if (user) {
+            res.send(generateTokenResponse(user));
+        } else {
+            res.status(HTTP_BAD_REQUEST).send('User not found');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
+
+export const changePassword = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+        const { currentPassword, newPassword } = req.body;
+        const user = await UserModel.findById(req.user!.id);
+
+        if (!user) {
+            res.status(HTTP_BAD_REQUEST).send('Change Password Failed!');
+            return;
+        }
+
+        const equal = await bcrypt.compare(currentPassword, user.password);
+
+        if (!equal) {
+            res.status(HTTP_BAD_REQUEST).send('Current Password Is Not Correct!');
+            return;
+        }
+
+        user.password = await bcrypt.hash(newPassword, 10);
+        await user.save();
+
+        res.send();
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
 
 const generateTokenResponse = (user: User) => {
     const token = jwt.sign(

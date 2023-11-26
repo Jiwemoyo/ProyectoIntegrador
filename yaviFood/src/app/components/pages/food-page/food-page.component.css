@@ -1,19 +1,21 @@
-.container{
+/* Estilos para el contenedor principal */
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-left: 160px;
-  margin-right: 160px;
-  margin-top: 100px;
+  margin: 100px;
+  /* Ajuste de márgenes */
 }
 
-.container > *{
+/* Estilos para elementos dentro del contenedor principal */
+.container>* {
   min-width: 25rem;
   max-width: 40rem;
 }
 
-img{
+/* Estilos para la imagen */
+img {
   border-radius: 3rem;
   flex: 1 0;
   object-fit: cover;
@@ -21,42 +23,47 @@ img{
   margin: 1rem;
 }
 
-.details{
+/* Estilos para los detalles */
+.details {
   width: 100%;
   display: flex;
   flex-direction: column;
-  flex:1 0;
+  flex: 1 0;
   padding: 2rem;
   color: black;
   margin-left: 1rem;
 }
 
-.header{
+/* Estilos para la cabecera */
+.header {
   display: flex;
   justify-content: space-between;
 }
 
-.name{
+/* Estilos para el nombre */
+.name {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.favorite{
+/* Estilos para el ícono de favorito */
+.favorite {
   color: #FFA07A;
   font-size: 2.5rem;
 }
 
-.favorite.not{
+.favorite.not {
   color: grey;
 }
 
-.origins{
+/* Estilos para el origen */
+.origins {
   display: flex;
   flex-wrap: wrap;
   margin: 1rem 0;
 }
 
-.origins span{
+.origins span {
   padding: 0.5rem;
   font-size: 1.2rem;
   margin: 0.5rem 0.5rem 0.5rem 0;
@@ -64,43 +71,49 @@ img{
   background-color: aliceblue;
 }
 
-.tags{
+/* Estilos para las etiquetas */
+.tags {
   display: flex;
   flex-wrap: wrap;
 }
 
-.tags a{
-  background-color: #f0f0f0;
+.tags a {
+  background-color: #FFA07A;
   padding: 0.3rem 1rem;
   margin: 0.2rem 0.15rem;
   border-radius: 10rem;
   font-weight: 600;
-  color: blue;
+  color: #FFFF;
 }
 
-.cook-time{
+/* Estilos para el tiempo de cocción */
+.cook-time {
   margin-top: 1rem;
 }
 
-.cook-time span{
+.cook-time span {
   padding: 0.6rem 2rem 0.6rem 0;
   border-radius: 10rem;
   font-size: 1.3rem;
 }
 
-.price{
+/* Estilos para el precio */
+.price {
   font-size: 1.8rem;
   margin: 2rem 2rem 2rem 0;
   color: green;
 }
 
-.price::before{
-  content: "Price: ";
+.price::before {
+  content: "Precio: ";
+  /* Ajuste del texto antes del precio */
   color: darkgrey;
 }
 
-button{
-  color: white;
+/* Estilos para el botón de agregar a la orden */
+button {
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
   background: #FFA07A;
   border: none;
   font-size: 1.2rem;
@@ -109,7 +122,32 @@ button{
   outline: none;
 }
 
-button:hover{
+button:hover {
   opacity: 0.9;
   cursor: pointer;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .container {
+    margin: 50px 10px;
+    /* Ajuste de márgenes para pantallas más pequeñas */
+  }
+
+  img {
+    height: 25rem;
+    /* Ajuste de altura de la imagen en pantallas más pequeñas */
+  }
+
+  .details {
+    padding: 1rem;
+    /* Ajuste de padding en los detalles en pantallas más pequeñas */
+    margin-left: 0;
+    /* Eliminar margen izquierdo en pantallas más pequeñas */
+  }
+
+  .price {
+    font-size: 1.5rem;
+    /* Ajuste de tamaño de fuente del precio en pantallas más pequeñas */
+  }
 }

@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="menu">
+        <a *ngFor="let item of allItems" [routerLink]="item.url" [style.backgroundColor]="item.bgColor"
+            [style.color]="item.color">
+            <img [src]="item.imageUrl" alt="{{ item.title }}" />
+            <h2>{{ item.title }}</h2>
+        </a>
+    </div>
+</div>

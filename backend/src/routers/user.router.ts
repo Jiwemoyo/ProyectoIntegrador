@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import * as UserController from '../controllers/user.controller';
 import asyncHandler from 'express-async-handler';
-import '../configs/definitions.swagger'
 const router = Router();
+import auth from '../middlewares/auth.mid'
 
 // Cargar datos de usuarios
 
@@ -23,6 +23,10 @@ router.get('/users/:id', asyncHandler(UserController.getUserById));
 router.put('/users/:id', asyncHandler(UserController.updateUser));
 
 router.delete('/users/:id', asyncHandler(UserController.deleteUser));
+
+router.put('/updateProfile',auth, asyncHandler(UserController.updateProfile));
+
+router.put('/changePassword',auth, asyncHandler(UserController.changePassword))
 
 /**
  * @swagger

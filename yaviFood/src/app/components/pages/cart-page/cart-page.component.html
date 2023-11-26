@@ -11,7 +11,7 @@ resetLinkText="Ir a página principal"
 <ul>
   <li *ngFor="let cartItem of cart.items">
     <div>
-      <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+      <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name" alt="">
     </div>
     <div>
       <a routerLink="/food/{{cartItem.food.id}}">
@@ -35,7 +35,7 @@ resetLinkText="Ir a página principal"
 
     <div>
       <button class="remove-button" (click)="removeFromCart(cartItem)">
-        Eliminar Producto
+        Quitar Producto
       </button>
     </div>
   </li>
@@ -46,7 +46,7 @@ resetLinkText="Ir a página principal"
     <div class="total-price">{{cart.totalPrice|currency}}</div>
   </div>
 
-  <a routerLink="/checkout">Pasar por la caja</a>
+  <a routerLink="/checkout">COMPRAR</a>
 </div>
 </div>
 

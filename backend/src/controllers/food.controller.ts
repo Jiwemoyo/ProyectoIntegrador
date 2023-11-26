@@ -7,11 +7,6 @@ import { sample_foods } from '../data';
 import { Types } from 'mongoose';
 
 export const getBase = asyncHandler(async (req: Request, res: Response) => {
-    const foodsCount = await FoodModel.countDocuments();
-    if (foodsCount > 0) {
-        res.send('Base cargada anteriormente');
-        return;
-    }
     await FoodModel.create(sample_foods);
     res.send('Base cargada!');
 });

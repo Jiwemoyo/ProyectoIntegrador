@@ -14,7 +14,7 @@ export default (req: any, res: any, next: any) => {
     } catch (error) {
         console.log("algo anda mal")
         return res.status(HTTP_UNAUTHORIZED).send("Token inválido o expirado");
-        
+
     }
 
     return next();
