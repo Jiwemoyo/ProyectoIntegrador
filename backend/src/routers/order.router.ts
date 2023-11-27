@@ -100,11 +100,42 @@ async function getNewOrderForCurrentUser(req: any) {
  *       type: object
  *       properties:
  *         food:
+ *           $ref: '#/components/schemas/Food'
  *         price:
  *           type: number
  *         quantity:
  *           type: number
+ *     Order:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         items:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/OrderItem'
+ *         totalPrice:
+ *           type: number
+ *         name:
+ *           type: string
+ *         address:
+ *           type: string
+ *         addressLatLng:
+ *           $ref: '#/components/schemas/LatLng'
+ *         paymentId:
+ *           type: string
+ *         status:
+ *           type: string
+ *         user:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
  */
+
 
 /**
  * @swagger

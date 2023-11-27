@@ -21,17 +21,35 @@ router.delete('/:foodId', FoodController.deleteFood);
 
 /**
  * @swagger
- * /api/foods/base:
- *   get:
- *     tags: [Alimentos]
- *     summary: Cargar base de alimentos
- *     description: Verifica si la base de alimentos está cargada, y si no, la carga con ejemplos de alimentos.
- *     responses:
- *       200:
- *         description: Base de alimentos cargada
- *       500:
- *         description: Error al cargar la base de alimentos
+ * components:
+ *   schemas:
+ *     PLATILLOS:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         name:
+ *           type: string
+ *         price:
+ *           type: number
+ *         tags:
+ *           type: array
+ *           items:
+ *             type: string
+ *         favorite:
+ *           type: boolean
+ *         stars:
+ *           type: number
+ *         imageUrl:
+ *           type: string
+ *         origins:
+ *           type: array
+ *           items:
+ *             type: string
+ *         cookTime:
+ *           type: string
  */
+
 
 /**
  * @swagger

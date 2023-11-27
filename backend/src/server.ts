@@ -22,6 +22,7 @@ const swaggerSpec = {
         openapi: '3.0.0',
         info: {
             title: 'BackEnd YaviFood API',
+            description: 'Grupo 5: Jinson Medina, Angeles Quinatoa, Alessandro Cisnero, Mishel Abendaño',
             version: '1.0.0',
         },
         servers: [

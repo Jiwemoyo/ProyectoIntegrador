@@ -38,17 +38,28 @@ router.put('/changePassword',auth, asyncHandler(UserController.changePassword))
 
 /**
  * @swagger
- * /api/users/base:
- *   get:
- *     tags: [Usuarios]
- *     summary: Cargar base de usuarios
- *     description: Verifica si la base de usuarios está cargada, y si no, la carga con ejemplos de usuarios.
- *     responses:
- *       200:
- *         description: Base de usuarios cargada
- *       500:
- *         description: Error al cargar la base de usuarios
+ * components:
+ *   schemas:
+ *     USUARIOS:
+ *       type: object
+ *       properties:
+ *         token:
+ *           type: string
+ *         id:
+ *           type: string
+ *         email:
+ *           type: string
+ *         password:
+ *           type: string
+ *         name:
+ *           type: string
+ *         address:
+ *           type: string
+ *         isAdmin:
+ *           type: boolean
  */
+
+
 
 /**
  * @swagger
@@ -223,6 +234,8 @@ router.put('/changePassword',auth, asyncHandler(UserController.changePassword))
  *       401:
  *         description: Acceso no autorizado
  */
+
+
 
 
 
