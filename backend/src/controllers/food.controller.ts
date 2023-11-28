@@ -113,7 +113,7 @@ export const deleteFood = asyncHandler(async (req: Request, res: Response) => {
         if (!deletedFood) {
             res.status(404).send('Platillo no encontrado');
         } else {
-            res.send('Platillo eliminado exitosamente');
+            res.json({ message: 'Platillo eliminado exitosamente' });
         }
     } catch (error) {
         res.status(400).json({ error: (error as Error).message });

@@ -57,6 +57,7 @@ router.delete('/:foodId', FoodController.deleteFood);
  *   get:
  *     tags: [Alimentos]
  *     summary: Obtener todos los alimentos
+ *     description: Obtiene la lista completa de alimentos.
  *     responses:
  *       200:
  *         description: Lista de alimentos

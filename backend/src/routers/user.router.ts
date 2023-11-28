@@ -234,9 +234,4 @@ router.put('/changePassword',auth, asyncHandler(UserController.changePassword))
  *       401:
  *         description: Acceso no autorizado
  */
-
-
-
-
-
 export default router;

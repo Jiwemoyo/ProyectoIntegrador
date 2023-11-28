@@ -175,7 +175,7 @@ export const updateProfile = async (req: AuthenticatedRequest, res: Response): P
         const { name, address } = req.body;
 
         if (!name || !address) {
-            res.status(400).json({ error: 'Name and address are required fields' });
+            res.status(400).json({ error: 'Nombre y dirreccion es necesario' });
             return;
         }
 
@@ -188,7 +188,7 @@ export const updateProfile = async (req: AuthenticatedRequest, res: Response): P
         if (user) {
             res.send(generateTokenResponse(user));
         } else {
-            res.status(HTTP_BAD_REQUEST).send('User not found');
+            res.status(HTTP_BAD_REQUEST).send('User no encontrado');
         }
     } catch (error) {
         console.error(error);
@@ -202,14 +202,14 @@ export const changePassword = async (req: AuthenticatedRequest, res: Response): 
         const user = await UserModel.findById(req.user!.id);
 
         if (!user) {
-            res.status(HTTP_BAD_REQUEST).send('Change Password Failed!');
+            res.status(HTTP_BAD_REQUEST).send('Cambio de contraseña fallido');
             return;
         }
 
         const equal = await bcrypt.compare(currentPassword, user.password);
 
         if (!equal) {
-            res.status(HTTP_BAD_REQUEST).send('Current Password Is Not Correct!');
+            res.status(HTTP_BAD_REQUEST).send('¡La contraseña actual no es correcta!')
             return;
         }
 
@@ -232,7 +232,7 @@ const generateTokenResponse = (user: User) => {
         },
         process.env.JWT_SECRET!,
         {
-            expiresIn: '2d',
+            expiresIn: '1h',
         }
     );
     return {
