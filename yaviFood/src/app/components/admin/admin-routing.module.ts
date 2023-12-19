@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'crud', component: PlatillosComponent, canActivate: [AuthGuard] },
       { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
       { path: 'ordenes', component: OrdersComponent, canActivate: [AuthGuard] },
