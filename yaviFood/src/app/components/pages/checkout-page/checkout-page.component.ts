@@ -40,12 +40,12 @@ export class CheckoutPageComponent implements OnInit {
 
   createOrder(){
     if(this.checkoutForm.invalid){
-      this.toastrService.warning('Please fill the inputs', 'Invalid Inputs');
+      this.toastrService.warning('Por favor complete los campos', 'Entradas no válidas');
       return;
     }
 
     if(!this.order.addressLatLng){
-      this.toastrService.warning('Please select your location on the map', 'Location');
+      this.toastrService.warning("Seleccione su ubicación en el mapa", "Ubicación");
       return;
     }
 

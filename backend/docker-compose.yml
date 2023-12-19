@@ -1,14 +1,13 @@
 version: '3'
 
 services:
-  # Configuración del servicio para la aplicación Node.js
-  food-back:
+  yavifood:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: YaviFood-Backend
+    container_name: yavifood/front
     ports:
-      - "7085:5000"
+      - "8085:5000"
     env_file:
       - ./src/.env
     networks:

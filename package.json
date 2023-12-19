@@ -1,9 +1,14 @@
 {
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.1.0",
-    "express-async-handler": "^1.2.0",
-    "mongoose": "^7.2.2",
-    "swagger-ui-express": "^5.0.0"
-  }
+  "name": "proyectointegrador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd yaviFood && ng build",
+    "postbuild": "cd yaviFood && ng build &&cd dist && xcopy yavi-food ..\\..\\backend\\src\\public\\ /s /y"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
